@@ -11,27 +11,6 @@
 
 #pragma mark - AVPlayer
 
-+ (Class)layerClass {
-    // 包裝一個 AVPlayerLayer 使用。
-    return [AVPlayerLayer class];
-}
-
-- (AVPlayer *)player {
-    // 初始化 player。
-    return [(AVPlayerLayer *)[self layer] player];
-}
-
-- (void)setPlayer:(AVPlayer *)player {
-    // 將 AVPlayer 放到 UiView 。
-    [(AVPlayerLayer *)[self layer] setPlayer:player];
-}
-
-
-- (AVPlayerLayer *)playerLayer {
-    // 回傳自己的 layer。
-    return (AVPlayerLayer *)self.layer;
-}
-
 #pragma mark - IBAction
 
 - (IBAction)periousVideoButtonAction:(id)sender {
@@ -88,7 +67,11 @@
     // 設定播放項目
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
     self.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.playerLayer.frame = self.frame;
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [self.layer insertSublayer:self.playerLayer atIndex:0];
+    
     [self.player play];
     // [self addObservers];
 }

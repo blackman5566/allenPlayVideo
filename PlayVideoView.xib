@@ -7,96 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="dA9-8w-cHf" customClass="PlayVideoView">
-            <rect key="frame" x="0.0" y="0.0" width="388" height="296"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8lI-mj-L7m">
-                    <rect key="frame" x="0.0" y="0.0" width="388" height="296"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tT-Cv-DUX">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                <rect key="frame" x="73" y="0.0" width="27" height="21"/>
-                            </variation>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vi-JB-4Mo">
-                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                <rect key="frame" x="289" y="0.0" width="27" height="21"/>
-                            </variation>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws4-Sv-JkN">
-                            <rect key="frame" x="322" y="258" width="46" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <state key="normal" title="zoom"/>
-                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                <rect key="frame" x="324" y="4" width="56" height="40"/>
-                            </variation>
-                            <connections>
-                                <action selector="fullScreenButtonAction:" destination="dA9-8w-cHf" eventType="touchUpInside" id="Yyb-bJ-vm8"/>
-                            </connections>
-                        </button>
-                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ymt-ak-2wM">
-                            <rect key="frame" x="80" y="258" width="229" height="31"/>
-                            <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                <rect key="frame" x="106" y="8" width="237" height="31"/>
-                            </variation>
-                            <connections>
-                                <action selector="videoSliderTouchDown:" destination="dA9-8w-cHf" eventType="touchDown" id="4UY-Sh-8Lc"/>
-                                <action selector="videoSliderUpInside:" destination="dA9-8w-cHf" eventType="touchDragInside" id="TlM-ZW-oyd"/>
-                            </connections>
-                        </slider>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbJ-st-XMt">
-                            <rect key="frame" x="18" y="258" width="46" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                            <state key="normal" title="play"/>
-                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="24" y="0.0" width="48" height="48"/>
-                            </variation>
-                            <connections>
-                                <action selector="playMusicButtonAction:" destination="dA9-8w-cHf" eventType="touchUpInside" id="ZlZ-W0-HDd"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="subviews">
-                            <exclude reference="2tT-Cv-DUX"/>
-                            <exclude reference="6Vi-JB-4Mo"/>
-                            <exclude reference="ws4-Sv-JkN"/>
-                            <exclude reference="ymt-ak-2wM"/>
-                            <exclude reference="WbJ-st-XMt"/>
-                        </mask>
-                    </variation>
-                </view>
-            </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-            <accessibility key="accessibilityConfiguration">
-                <accessibilityTraits key="traits" notEnabled="YES"/>
-            </accessibility>
-            <gestureRecognizers/>
-            <nil key="simulatedStatusBarMetrics"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayVideoView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="heightClass=regular-widthClass=compact">
-                <mask key="subviews">
-                    <exclude reference="8lI-mj-L7m"/>
-                </mask>
-            </variation>
-            <connections>
-                <outlet property="controlButtonView" destination="8lI-mj-L7m" id="aaq-p1-iXT"/>
-                <outlet property="currentlyTimeLabel" destination="2tT-Cv-DUX" id="Ci0-Od-Zga"/>
-                <outlet property="fullScreenButton" destination="ws4-Sv-JkN" id="4Vq-QW-tpx"/>
-                <outlet property="playVideoButton" destination="WbJ-st-XMt" id="m95-CK-mvt"/>
-                <outlet property="totalTimeLabel" destination="6Vi-JB-4Mo" id="ZA4-Lu-Kfa"/>
-                <outlet property="videoSlider" destination="ymt-ak-2wM" id="0Ud-ee-MUl"/>
-            </connections>
-            <point key="canvasLocation" x="-821" y="-531"/>
+            <point key="canvasLocation" x="15" y="58"/>
         </view>
     </objects>
 </document>

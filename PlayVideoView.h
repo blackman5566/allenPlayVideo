@@ -21,7 +21,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *totalTimeLabel;
 @property (nonatomic, weak) IBOutlet UISlider *videoSlider;
 @property (nonatomic, strong) AVPlayer *player;
-@property (nonatomic, readonly) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) BOOL isSliderMoving;
