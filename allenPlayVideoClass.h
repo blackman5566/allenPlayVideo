@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import<>
+typedef enum {
+    PathTypeFromDefault,
+    PathTypeFromDocument,
+    PathTypeFromResource,
+    PathTypeFromURL
+} PathType;
 
 @interface allenPlayVideoClass : UIView
 
