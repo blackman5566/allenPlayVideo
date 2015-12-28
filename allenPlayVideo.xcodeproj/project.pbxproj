@@ -13,6 +13,8 @@
 		E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */; };
 		E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */; };
 		E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */; };
+		E464C6041C30DCAB00E05FC4 /* allenPlayVideoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */; };
+		E464C6091C30DF2B00E05FC4 /* allenPlayVideoClass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		E464C5FD1C30DB4B00E05FC4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		E464C6021C30DCAB00E05FC4 /* allenPlayVideoClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allenPlayVideoClass.h; sourceTree = "<group>"; };
+		E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = allenPlayVideoClass.m; sourceTree = "<group>"; };
+		E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = allenPlayVideoClass.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +47,7 @@
 		E464C5DA1C30D7C300E05FC4 = {
 			isa = PBXGroup;
 			children = (
+				E464C6071C30DCDB00E05FC4 /* allenPlayVideoClass */,
 				E464C5E51C30D7C300E05FC4 /* allenPlayVideo */,
 				E464C5E41C30D7C300E05FC4 /* Products */,
 			);
@@ -77,6 +83,16 @@
 				E464C5E71C30D7C300E05FC4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E464C6071C30DCDB00E05FC4 /* allenPlayVideoClass */ = {
+			isa = PBXGroup;
+			children = (
+				E464C6021C30DCAB00E05FC4 /* allenPlayVideoClass.h */,
+				E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */,
+				E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */,
+			);
+			name = allenPlayVideoClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +156,7 @@
 				E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */,
 				E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
+				E464C6091C30DF2B00E05FC4 /* allenPlayVideoClass.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +170,7 @@
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
+				E464C6041C30DCAB00E05FC4 /* allenPlayVideoClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
