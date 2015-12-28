@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  allenPlayVideo
 //
 //  Created by allen_hsu on 2015/12/28.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainViewController : UIViewController
 
 @end
-
