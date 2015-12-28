@@ -13,13 +13,13 @@
 		E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */; };
 		E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */; };
 		E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */; };
-		E464C6041C30DCAB00E05FC4 /* allenPlayVideoClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */; };
-		E464C6091C30DF2B00E05FC4 /* allenPlayVideoClass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */; };
 		E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C60B1C30E30900E05FC4 /* DownloadViewController.m */; };
 		E464C60E1C30E30900E05FC4 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */; };
 		E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61B1C312C2F00E05FC4 /* like.m4v */; };
 		E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61C1C312C2F00E05FC4 /* Movie.m4v */; };
 		E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */; };
+		E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C6221C31395900E05FC4 /* PlayVideoView.m */; };
+		E464C6251C31395900E05FC4 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C6231C31395900E05FC4 /* PlayVideoView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,15 +33,15 @@
 		E464C5FD1C30DB4B00E05FC4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		E464C6021C30DCAB00E05FC4 /* allenPlayVideoClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allenPlayVideoClass.h; sourceTree = "<group>"; };
-		E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = allenPlayVideoClass.m; sourceTree = "<group>"; };
-		E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = allenPlayVideoClass.xib; sourceTree = "<group>"; };
 		E464C60A1C30E30900E05FC4 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = ../DownloadViewController.h; sourceTree = "<group>"; };
 		E464C60B1C30E30900E05FC4 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = ../DownloadViewController.m; sourceTree = "<group>"; };
 		E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = ../DownloadViewController.xib; sourceTree = "<group>"; };
 		E464C61B1C312C2F00E05FC4 /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
 		E464C61C1C312C2F00E05FC4 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
 		E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我能給的.m4v"; sourceTree = "<group>"; };
+		E464C6211C31395900E05FC4 /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
+		E464C6221C31395900E05FC4 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
+		E464C6231C31395900E05FC4 /* PlayVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			children = (
 				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
 				E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */,
-				E464C6071C30DCDB00E05FC4 /* allenPlayVideoClass */,
+				E464C6071C30DCDB00E05FC4 /* AllenPlayVideoClass */,
 				E464C5E51C30D7C300E05FC4 /* allenPlayVideo */,
 				E464C5E41C30D7C300E05FC4 /* Products */,
 			);
@@ -96,14 +96,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E464C6071C30DCDB00E05FC4 /* allenPlayVideoClass */ = {
+		E464C6071C30DCDB00E05FC4 /* AllenPlayVideoClass */ = {
 			isa = PBXGroup;
 			children = (
-				E464C6021C30DCAB00E05FC4 /* allenPlayVideoClass.h */,
-				E464C6031C30DCAB00E05FC4 /* allenPlayVideoClass.m */,
-				E464C6081C30DF2B00E05FC4 /* allenPlayVideoClass.xib */,
+				E464C6211C31395900E05FC4 /* PlayVideoView.h */,
+				E464C6221C31395900E05FC4 /* PlayVideoView.m */,
+				E464C6231C31395900E05FC4 /* PlayVideoView.xib */,
 			);
-			name = allenPlayVideoClass;
+			name = AllenPlayVideoClass;
 			sourceTree = "<group>";
 		};
 		E464C60F1C30E31700E05FC4 /* MainViewController */ = {
@@ -194,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E464C6251C31395900E05FC4 /* PlayVideoView.xib in Resources */,
 				E464C60E1C30E30900E05FC4 /* DownloadViewController.xib in Resources */,
 				E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */,
 				E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */,
@@ -201,7 +202,6 @@
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
 				E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */,
 				E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */,
-				E464C6091C30DF2B00E05FC4 /* allenPlayVideoClass.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,10 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
-				E464C6041C30DCAB00E05FC4 /* allenPlayVideoClass.m in Sources */,
 				E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,9 +7,11 @@
 //
 
 #import "MainViewController.h"
-#import "allenPlayVideoClass.h"
+#import "PlayVideoView.h"
 
 @interface MainViewController ()
+
+@property(nonatomic, strong) PlayVideoView *PlayVideo;
 
 @end
 
@@ -21,11 +23,9 @@
     self.title = @"MainView";
 }
 - (void)setupVideoView {
-    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200);
-    allenPlayVideoClass *playView  = [[allenPlayVideoClass alloc] initWithFrame:frame];
-    
-    [self.view addSubview:playView];
-
+    self.PlayVideo = [[PlayVideoView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight(self.view.frame))];
+    [self.view addSubview:self.PlayVideo];
+    [self.PlayVideo playVideoConfigure:0];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
