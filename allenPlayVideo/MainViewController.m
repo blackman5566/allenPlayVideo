@@ -16,7 +16,8 @@
 @implementation MainViewController
 
 - (void)viewDidLoad {
-    allenPlayVideoClass *playView  = [[allenPlayVideoClass alloc]initWithFrame:CGRectMake(0, 0,CGRectGetWidth(self.view.frame), 200)];
+    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200);
+    allenPlayVideoClass *playView  = [[allenPlayVideoClass alloc]initWithFrame:frame];
     [self.view addSubview:playView];
     [super viewDidLoad];
 }
