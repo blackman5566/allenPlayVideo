@@ -49,7 +49,7 @@
 }
 
 - (IBAction)fullScreenButtonAction:(id)sender {
-    
+
 }
 
 #pragma mark * Slider
@@ -182,7 +182,7 @@
 
 - (void)periousVideoButtonAction {
     self.playIndex--;
-    self.playIndex = --self.playIndex % self.dataSoruce.count;
+    self.playIndex = self.playIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
     [self playVideo];
 }
