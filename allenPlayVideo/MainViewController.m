@@ -15,11 +15,21 @@
 
 @implementation MainViewController
 
-- (void)viewDidLoad {
+#pragma mark - private method
+
+- (void)setupInitValue {
+    self.title = @"MainView";
+}
+- (void)setupVideoView {
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200);
-    allenPlayVideoClass *playView  = [[allenPlayVideoClass alloc]initWithFrame:frame];
+    allenPlayVideoClass *playView  = [[allenPlayVideoClass alloc] initWithFrame:frame];
     [self.view addSubview:playView];
+
+}
+- (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupInitValue];
+    [self setupVideoView];
 }
 
 

@@ -19,16 +19,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UITabBarController *tabBar = [UITabBarController new];
-    tabBar.viewControllers =[self generatorViewControllers];
-
-    self.window.rootViewController = [MainViewController new];
+    tabBar.viewControllers = [self generatorViewControllers];
+    self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (NSArray *)generatorViewControllers {
-    UINavigationController *MainNavigationController = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
+    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
+    UITabBarItem *mainButton = [[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"play.png"] selectedImage:[UIImage imageNamed:@"played.png"]];
+    mainNavigationController.tabBarItem = mainButton;
     UINavigationController *downNavigationController = [[UINavigationController alloc] initWithRootViewController:[DownloadViewController new]];
-    return @[MainNavigationController, downNavigationController];
+    UITabBarItem *downButton = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"download.png"] selectedImage:[UIImage imageNamed:@"download.png"]];
+    downNavigationController.tabBarItem = downButton;
+    return @[mainNavigationController, downNavigationController];
 }
 @end
