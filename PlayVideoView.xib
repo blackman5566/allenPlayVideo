@@ -33,17 +33,29 @@
                             </connections>
                         </button>
                         <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-WX-xQE">
-                            <rect key="frame" x="60" y="10" width="200" height="31"/>
+                            <rect key="frame" x="60" y="20" width="200" height="31"/>
                             <connections>
                                 <action selector="videoSliderTouchDown:" destination="tPB-vs-EMS" eventType="touchDown" id="InO-lH-CE7"/>
                                 <action selector="videoSliderUpInside:" destination="tPB-vs-EMS" eventType="touchUpInside" id="EwI-Ej-GxW"/>
                             </connections>
                         </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfg-gU-Z7E">
+                            <rect key="frame" x="62" y="5" width="35" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atQ-b3-cgF">
+                            <rect key="frame" x="236" y="5" width="35" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-FV-A0k">
-                    <rect key="frame" x="124" y="50" width="72" height="48"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <rect key="frame" x="110" y="50" width="100" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="play"/>
                     <connections>
                         <action selector="playMusicButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="Px8-yf-1gO"/>
@@ -68,7 +80,12 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="currentTimeLabel" destination="Gfg-gU-Z7E" id="3f0-ZT-M43"/>
+                <outlet property="playAndPauseButton" destination="bCS-FV-A0k" id="Tkp-Z8-Koj"/>
                 <outlet property="playVideoView" destination="0cP-B9-1St" id="4CH-Ix-cxa"/>
+                <outlet property="rateButton" destination="L47-Zu-ck8" id="sc5-Gw-Fa6"/>
+                <outlet property="totalTimeLabel" destination="atQ-b3-cgF" id="qfT-2C-EIx"/>
+                <outlet property="videoSlider" destination="vwS-WX-xQE" id="blc-1S-WGo"/>
             </connections>
             <point key="canvasLocation" x="-1120" y="-265"/>
         </view>
