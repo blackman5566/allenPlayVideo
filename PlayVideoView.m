@@ -71,6 +71,28 @@
     self.isChangeRate = !self.isChangeRate;
 }
 
+#pragma mark * play feature
+
+- (void)nextVideoButtonAction {
+    self.playIndex++;
+    self.playIndex %= self.dataSoruce.count;
+    [self playVideoConfigure:self.playIndex];
+}
+
+- (void)periousVideoButtonAction {
+    self.playIndex--;
+    self.playIndex %= self.dataSoruce.count;
+    [self playVideoConfigure:self.playIndex];
+}
+
+- (void)playVideo {
+    [self.player play];
+}
+
+- (void)pauseVideo {
+    [self.player pause];
+}
+
 #pragma mark * Slider
 
 - (IBAction)videoSliderTouchDown:(id)sender {
@@ -130,7 +152,8 @@
 #pragma mark * misc
 
 - (void)addProgressBarUpdate {
-    int totalSeconds = CMTimeGetSeconds(self.player.currentItem.asset.duration);
+    CMTime totalTime = self.player.currentItem.asset.duration;
+    CGFloat totalSeconds = CMTimeGetSeconds(totalTime);
     self.videoSlider.maximumValue = totalSeconds;
     // 给播放器增加進度更新
     __weak typeof(self) weakSelf = self;
@@ -139,6 +162,8 @@
              CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
              weakSelf.videoSlider.value = currentTime;
              weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
+             CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
+             weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
          }
      }];
 }
@@ -174,10 +199,7 @@
     if ([keyPath isEqualToString:@"status"]) {
         AVPlayerStatus status = [change[@"new"] intValue];
         if (status == AVPlayerStatusReadyToPlay) {
-            CGFloat totalSeconds = CMTimeGetSeconds(playerItem.duration);
-            self.totalTimeLabel.text = [self convertTime:totalSeconds];
             [self addProgressBarUpdate];
-            NSLog(@"addProgressBarUpdate");
         }
     }
 
@@ -196,29 +218,6 @@
 - (void)removeAllObserver {
     [self.player.currentItem removeObserver:self forKeyPath:@"status"];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-}
-
-
-#pragma mark * play feature
-
-- (void)nextVideoButtonAction {
-    self.playIndex++;
-    self.playIndex %= self.dataSoruce.count;
-    [self playVideoConfigure:self.playIndex];
-}
-
-- (void)periousVideoButtonAction {
-    self.playIndex--;
-    self.playIndex %= self.dataSoruce.count;
-    [self playVideoConfigure:self.playIndex];
-}
-
-- (void)playVideo {
-    [self.player play];
-}
-
-- (void)pauseVideo {
-    [self.player pause];
 }
 
 @end

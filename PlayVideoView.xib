@@ -32,7 +32,7 @@
                                 <action selector="fullScreenButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="aDQ-bG-b5b"/>
                             </connections>
                         </button>
-                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-WX-xQE">
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-WX-xQE">
                             <rect key="frame" x="60" y="20" width="200" height="31"/>
                             <connections>
                                 <action selector="videoSliderTouchDown:" destination="tPB-vs-EMS" eventType="touchDown" id="InO-lH-CE7"/>
@@ -87,7 +87,7 @@
                 <outlet property="totalTimeLabel" destination="atQ-b3-cgF" id="qfT-2C-EIx"/>
                 <outlet property="videoSlider" destination="vwS-WX-xQE" id="blc-1S-WGo"/>
             </connections>
-            <point key="canvasLocation" x="-1120" y="-265"/>
+            <point key="canvasLocation" x="-1321" y="-335"/>
         </view>
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J0e-zP-v9V">
             <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
