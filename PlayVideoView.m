@@ -7,8 +7,13 @@
 //
 
 #import "PlayVideoView.h"
-#define RIGHT_WIDTH 40
-#define CONTORL_HIGHT 50
+
+typedef enum {
+    PathTypeFromDefault,
+    PathTypeFromDocument,
+    PathTypeFromResource,
+    PathTypeFromURL
+}PathType;
 
 @interface PlayVideoView ()
 
@@ -156,7 +161,7 @@
 - (void)playVideoConfigure:(NSInteger)videoindex {
     [self removeAllObserver];
     // 取得檔案路徑
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.dataSoruce[videoindex] ofType:@"m4v"];
+    NSString *path = [self playVideo:self.dataSoruce[videoindex] pathType:PathTypeFromDefault];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     // 設定播放項目
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
@@ -184,9 +189,9 @@
     return [formatter stringFromDate:date];
 }
 
-- (UIImage *)videoImage:(int)keyValue {
+- (UIImage *)videoImage:(NSInteger)videoindex {
     // 取得影片檔案位置
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.dataSoruce[keyValue] ofType:@"m4v"];
+    NSString *path = [self playVideo:self.dataSoruce[videoindex] pathType:PathTypeFromDefault];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:fileURL options:nil];
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
@@ -226,6 +231,56 @@
 
 #pragma mark - KVO
 
+- (NSString *)playVideo:(NSString *)videoName pathType:(PathType)pathType {
+    NSString *path = [self pathVideoName:videoName fromDocument:pathType];
+    if (path) {
+        return path;
+    }
+    return nil;
+}
+
+- (NSString *)pathVideoName:(NSString *)videoName fromDocument:(PathType)pathType {
+    NSString *path;
+    switch (pathType) {
+        case PathTypeFromDefault:
+        {
+            path = [self pathVideoName:videoName fromDocument:PathTypeFromDocument];
+            if (!path.length) {
+                path = [self pathVideoName:videoName fromDocument:PathTypeFromResource];
+            }
+            break;
+        }
+
+        case PathTypeFromDocument:
+        {
+            NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            path = [documentPath[0] stringByAppendingString:[NSString stringWithFormat:@"/%@.m4v", videoName]];
+            break;
+        }
+
+        case PathTypeFromResource:
+        {
+            path = [[NSBundle mainBundle] pathForResource:videoName ofType:@".m4v"];
+            break;
+        }
+
+        case PathTypeFromURL:
+        {
+            return videoName;
+        }
+    }
+
+    if (![self isFindMP3:path]) {
+        path = [NSString new];
+    }
+    return path;
+}
+
+- (BOOL)isFindMP3:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:path] ? YES : NO;
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"]) {
@@ -259,14 +314,14 @@
     // 给播放器增加進度更新
     __weak typeof(self) weakSelf = self;
     [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
-        if (!weakSelf.isSliderMoving) {
-            CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
-            weakSelf.videoSlider.value = currentTime;
-            weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
-            CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
-            weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
-        }
-    }];
+         if (!weakSelf.isSliderMoving) {
+             CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
+             weakSelf.videoSlider.value = currentTime;
+             weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
+             CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
+             weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
+         }
+     }];
 }
 
 @end

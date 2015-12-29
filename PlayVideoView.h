@@ -12,6 +12,6 @@
 @interface PlayVideoView : UIView
 
 - (void)initVideoData:(NSArray *)videoData;
-- (UIImage *)videoImage:(int)keyValue;
+- (UIImage *)videoImage:(NSInteger)keyValue;
 
 @end
