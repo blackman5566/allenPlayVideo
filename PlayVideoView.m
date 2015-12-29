@@ -7,11 +7,15 @@
 //
 
 #import "PlayVideoView.h"
+@interface PlayVideoView()
+
+@property (weak, nonatomic) IBOutlet UIView *playVideoView;
+
+@end
+
 @implementation PlayVideoView
 
-#pragma mark - AVPlayer
-
-#pragma mark - IBAction
+#pragma mark - IBAction Action
 
 - (IBAction)periousVideoButtonAction:(id)sender {
     [self periousVideoButtonAction];
@@ -24,10 +28,13 @@
 - (IBAction)playMusicButtonAction:(id)sender {
     // 播放功能
     self.isPlayingVideos = !self.isPlayingVideos;
-    [self playVideo];
 }
 
 - (IBAction)fullScreenButtonAction:(id)sender {
+
+}
+
+- (IBAction)rateButtonAction:(id)sender {
 
 }
 
@@ -48,7 +55,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:@"PlayVideoView" owner:self options:nil] lastObject];
+        self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil][0];
         self.isPlayingVideos = YES;
     }
     return self;
@@ -58,11 +65,21 @@
 
 #pragma mark * init
 
-- (void)playVideoConfigure:(int)keyValue {
-    // [self removeAllObserver];
+- (void)checkVideoData:(NSArray *)videoData {
+    if (videoData.count) {
+        self.dataSoruce = videoData;
+        self.playIndex = 0;
+        [self playVideoConfigure:self.playIndex];
+    }
+    else {
+        NSLog(@"no data");
+    }
+
+}
+- (void)playVideoConfigure:(int)videoindex {
+    [self removeAllObserver];
     // 取得檔案路徑
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"like" ofType:@"m4v"];
-    NSLog(@"path = %@", path);
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.dataSoruce[videoindex] ofType:@"m4v"];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     // 設定播放項目
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
@@ -70,10 +87,10 @@
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
     self.playerLayer.frame = self.frame;
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.layer insertSublayer:self.playerLayer atIndex:0];
-    
+    [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.playVideoView.layer addSublayer:self.playerLayer];
     [self.player play];
-    // [self addObservers];
+    [self addObservers];
 }
 
 #pragma mark * misc
@@ -145,29 +162,16 @@
 
 #pragma mark * play feature
 
-- (void)playVideo {
-    if (self.isPlayingVideos) {
-        [self.playVideoButton setTitle:@"play" forState:UIControlStateNormal];
-        [self.playerLayer.player pause];
-    }
-    else {
-        [self.playVideoButton setTitle:@"pause" forState:UIControlStateNormal];
-        [self.playerLayer.player play];
-    }
-}
-
 - (void)nextVideoButtonAction {
     self.playIndex++;
-    self.playIndex = self.playIndex % self.dataSoruce.count;
+    self.playIndex %= self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
-    [self playVideo];
 }
 
 - (void)periousVideoButtonAction {
     self.playIndex--;
-    self.playIndex = self.playIndex % self.dataSoruce.count;
+    self.playIndex %= self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
-    [self playVideo];
 }
 
 @end

@@ -7,12 +7,76 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PlayVideoView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        <view contentMode="scaleToFill" id="tPB-vs-EMS" customClass="PlayVideoView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-B9-1St">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vE2-ka-wf4">
+                    <rect key="frame" x="0.0" y="150" width="320" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L47-Zu-ck8">
+                            <rect key="frame" x="0.0" y="11" width="54" height="30"/>
+                            <state key="normal" title="x2"/>
+                            <connections>
+                                <action selector="rateButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="YJU-dd-Ddy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8S-AM-xrL">
+                            <rect key="frame" x="270" y="11" width="50" height="30"/>
+                            <state key="normal" title="zoom"/>
+                            <connections>
+                                <action selector="fullScreenButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="aDQ-bG-b5b"/>
+                            </connections>
+                        </button>
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vwS-WX-xQE">
+                            <rect key="frame" x="60" y="10" width="200" height="31"/>
+                            <connections>
+                                <action selector="videoSliderTouchDown:" destination="tPB-vs-EMS" eventType="touchDown" id="InO-lH-CE7"/>
+                                <action selector="videoSliderUpInside:" destination="tPB-vs-EMS" eventType="touchUpInside" id="EwI-Ej-GxW"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-FV-A0k">
+                    <rect key="frame" x="124" y="50" width="72" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <state key="normal" title="play"/>
+                    <connections>
+                        <action selector="playMusicButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="Px8-yf-1gO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAz-sm-Css">
+                    <rect key="frame" x="0.0" y="60" width="40" height="30"/>
+                    <state key="normal" title="&lt;"/>
+                    <connections>
+                        <action selector="periousVideoButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="HB8-AD-pAd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnO-iz-mYP">
+                    <rect key="frame" x="280" y="60" width="40" height="30"/>
+                    <state key="normal" title="&gt;"/>
+                    <connections>
+                        <action selector="nextVideoButtonAction:" destination="tPB-vs-EMS" eventType="touchUpInside" id="3gq-wy-nLW"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="15" y="58"/>
+            <connections>
+                <outlet property="playVideoView" destination="0cP-B9-1St" id="4CH-Ix-cxa"/>
+            </connections>
+            <point key="canvasLocation" x="-1120" y="-265"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J0e-zP-v9V">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button"/>
+            <point key="canvasLocation" x="-634" y="-241"/>
+        </button>
     </objects>
 </document>

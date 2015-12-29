@@ -32,6 +32,6 @@
     UINavigationController *downNavigationController = [[UINavigationController alloc] initWithRootViewController:[DownloadViewController new]];
     UITabBarItem *downButton = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"download.png"] selectedImage:[UIImage imageNamed:@"download.png"]];
     downNavigationController.tabBarItem = downButton;
-    return @[mainNavigationController, downNavigationController];
+    return @[[MainViewController new], downNavigationController];
 }
 @end

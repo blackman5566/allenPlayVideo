@@ -23,9 +23,10 @@
     self.title = @"MainView";
 }
 - (void)setupVideoView {
-    self.PlayVideo = [[PlayVideoView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight(self.view.frame))];
+    self.PlayVideo = [PlayVideoView new];
     [self.view addSubview:self.PlayVideo];
-    [self.PlayVideo playVideoConfigure:0];
+    NSArray *array = @[@"like", @"Movie", @"我能給的"];
+    [self.PlayVideo checkVideoData:array];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

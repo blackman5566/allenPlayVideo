@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface PlayVideoView : UIView{
-    
-}
+@interface PlayVideoView : UIView
 
 @property (nonatomic, weak) IBOutlet UIView *topBarView;
 @property (nonatomic, weak) IBOutlet UIView *controlButtonView;
@@ -28,7 +26,7 @@
 @property (assign, nonatomic) int playIndex;
 @property (strong, nonatomic) NSArray *dataSoruce;
 
-- (void)playVideoConfigure:(int)keyValue;
+- (void)checkVideoData:(NSArray *)videoData;
 - (UIImage *)videoImage:(int)keyValue;
-- (void)playVideo;
+
 @end
