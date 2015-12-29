@@ -119,9 +119,10 @@
     return self;
 }
 
-- (void)checkVideoData:(NSArray *)videoData {
+- (void)initVideoData:(NSArray *)videoData {
     if (videoData.count) {
         self.isChangeRate = NO;
+        self.isPlayingVideos = YES;
         self.dataSoruce = videoData;
         self.playIndex = 0;
         [self playVideoConfigure:self.playIndex];
@@ -145,7 +146,6 @@
     [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [self.playVideoView.layer addSublayer:self.playerLayer];
     [self.player play];
-    self.isPlayingVideos = YES;
     [self addObservers];
 }
 
@@ -195,7 +195,7 @@
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    AVPlayerItem *playerItem = (AVPlayerItem *)object;
+    //AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"]) {
         AVPlayerStatus status = [change[@"new"] intValue];
         if (status == AVPlayerStatusReadyToPlay) {

@@ -26,7 +26,7 @@
     self.PlayVideo = [PlayVideoView new];
     [self.view addSubview:self.PlayVideo];
     NSArray *array = @[@"like", @"Movie", @"我能給的"];
-    [self.PlayVideo checkVideoData:array];
+    [self.PlayVideo initVideoData:array];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
