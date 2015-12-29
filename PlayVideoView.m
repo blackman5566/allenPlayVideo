@@ -7,14 +7,20 @@
 //
 
 #import "PlayVideoView.h"
+#define RIGHT_WIDTH 40
+#define CONTORL_HIGHT 50
+
 @interface PlayVideoView ()
 
 @property (weak, nonatomic) IBOutlet UIView *playVideoView;
+@property (weak, nonatomic) IBOutlet UIView *controlButtonView;
 @property (weak, nonatomic) IBOutlet UIButton *playAndPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *rateButton;
-@property (weak, nonatomic) IBOutlet UISlider *videoSlider;
+@property (weak, nonatomic) IBOutlet UIButton *previouButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+@property (weak, nonatomic) IBOutlet UISlider *videoSlider;
 
 @property (strong, nonatomic) NSArray *dataSoruce;
 @property (strong, nonatomic) AVPlayer *player;
@@ -23,12 +29,24 @@
 @property (assign, nonatomic) BOOL isChangeRate;
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) BOOL isSliderMoving;
-@property (assign, nonatomic) int playIndex;
+@property (assign, nonatomic) BOOL isHide;
+@property (assign, nonatomic) NSInteger playIndex;
 
 @end
 
 @implementation PlayVideoView
 
+#pragma mark - GestureRecognizer
+
+- (IBAction)tapGestureRecognizerAction:(id)sender {
+    if (self.isHide) {
+        [self controlButtonViewShow];
+    }
+    else {
+        [self controlButtonViewHide];
+    }
+    self.isHide = !self.isHide;
+}
 #pragma mark - IBAction Action
 
 - (IBAction)periousVideoButtonAction:(id)sender {
@@ -75,13 +93,15 @@
 
 - (void)nextVideoButtonAction {
     self.playIndex++;
-    self.playIndex %= self.dataSoruce.count;
+    NSInteger nextIndex = (self.playIndex + self.dataSoruce.count);
+    self.playIndex = nextIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
 }
 
 - (void)periousVideoButtonAction {
     self.playIndex--;
-    self.playIndex %= self.dataSoruce.count;
+    NSInteger preIndex = (self.playIndex + self.dataSoruce.count);
+    self.playIndex = preIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
 }
 
@@ -125,14 +145,15 @@
         self.isPlayingVideos = YES;
         self.dataSoruce = videoData;
         self.playIndex = 0;
+        self.isHide = NO;
         [self playVideoConfigure:self.playIndex];
     }
     else {
         NSLog(@"no data");
     }
-
 }
-- (void)playVideoConfigure:(int)videoindex {
+
+- (void)playVideoConfigure:(NSInteger)videoindex {
     [self removeAllObserver];
     // 取得檔案路徑
     NSString *path = [[NSBundle mainBundle] pathForResource:self.dataSoruce[videoindex] ofType:@"m4v"];
@@ -141,7 +162,7 @@
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
     self.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    self.playerLayer.frame = self.frame;
+    self.playerLayer.frame = self.bounds;
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [self.playVideoView.layer addSublayer:self.playerLayer];
@@ -150,23 +171,6 @@
 }
 
 #pragma mark * misc
-
-- (void)addProgressBarUpdate {
-    CMTime totalTime = self.player.currentItem.asset.duration;
-    CGFloat totalSeconds = CMTimeGetSeconds(totalTime);
-    self.videoSlider.maximumValue = totalSeconds;
-    // 给播放器增加進度更新
-    __weak typeof(self) weakSelf = self;
-    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
-         if (!weakSelf.isSliderMoving) {
-             CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
-             weakSelf.videoSlider.value = currentTime;
-             weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
-             CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
-             weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
-         }
-     }];
-}
 
 - (NSString *)convertTime:(CGFloat)second {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:second];
@@ -192,6 +196,34 @@
     return [[UIImage alloc] initWithCGImage:imgRef];
 }
 
+- (void)controlButtonViewHide {
+    [UIView animateWithDuration:.2f animations: ^{
+         self.controlButtonView.alpha = 0.0f;
+         self.playAndPauseButton.alpha = 0.0f;
+         self.previouButton.alpha = 0.0f;
+         self.nextButton.alpha = 0.0f;
+     } completion: ^(BOOL finished) {
+         self.controlButtonView.hidden = YES;
+         self.playAndPauseButton.hidden = YES;
+         self.previouButton.hidden = YES;
+         self.nextButton.hidden = YES;
+     }];
+}
+
+- (void)controlButtonViewShow {
+    [UIView animateWithDuration:.2f animations: ^{
+         self.controlButtonView.alpha = 1.0f;
+         self.playAndPauseButton.alpha = 1.0f;
+         self.previouButton.alpha = 1.0f;
+         self.nextButton.alpha = 1.0f;
+     } completion: ^(BOOL finished) {
+         self.controlButtonView.hidden = NO;
+         self.playAndPauseButton.hidden = NO;
+         self.previouButton.hidden = NO;
+         self.nextButton.hidden = NO;
+     }];
+}
+
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -202,7 +234,6 @@
             [self addProgressBarUpdate];
         }
     }
-
 }
 
 - (void)addObservers {
@@ -216,8 +247,26 @@
 }
 
 - (void)removeAllObserver {
+    // 移除監聽
     [self.player.currentItem removeObserver:self forKeyPath:@"status"];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+}
+
+- (void)addProgressBarUpdate {
+    CMTime totalTime = self.player.currentItem.asset.duration;
+    CGFloat totalSeconds = CMTimeGetSeconds(totalTime);
+    self.videoSlider.maximumValue = totalSeconds;
+    // 给播放器增加進度更新
+    __weak typeof(self) weakSelf = self;
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
+        if (!weakSelf.isSliderMoving) {
+            CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
+            weakSelf.videoSlider.value = currentTime;
+            weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
+            CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
+            weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
+        }
+    }];
 }
 
 @end

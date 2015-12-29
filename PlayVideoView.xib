@@ -14,6 +14,10 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-B9-1St">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="RrM-mA-ihj" appends="YES" id="fc7-dV-wbN"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vE2-ka-wf4">
                     <rect key="frame" x="0.0" y="150" width="320" height="50"/>
@@ -80,14 +84,17 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="controlButtonView" destination="vE2-ka-wf4" id="nmx-oe-u5s"/>
                 <outlet property="currentTimeLabel" destination="Gfg-gU-Z7E" id="3f0-ZT-M43"/>
+                <outlet property="nextButton" destination="dnO-iz-mYP" id="scR-tZ-ZJ2"/>
                 <outlet property="playAndPauseButton" destination="bCS-FV-A0k" id="Tkp-Z8-Koj"/>
                 <outlet property="playVideoView" destination="0cP-B9-1St" id="4CH-Ix-cxa"/>
+                <outlet property="previouButton" destination="eAz-sm-Css" id="cfe-om-pD9"/>
                 <outlet property="rateButton" destination="L47-Zu-ck8" id="sc5-Gw-Fa6"/>
                 <outlet property="totalTimeLabel" destination="atQ-b3-cgF" id="qfT-2C-EIx"/>
                 <outlet property="videoSlider" destination="vwS-WX-xQE" id="blc-1S-WGo"/>
             </connections>
-            <point key="canvasLocation" x="-1321" y="-335"/>
+            <point key="canvasLocation" x="-1691" y="-346"/>
         </view>
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J0e-zP-v9V">
             <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
@@ -95,5 +102,10 @@
             <state key="normal" title="Button"/>
             <point key="canvasLocation" x="-634" y="-241"/>
         </button>
+        <tapGestureRecognizer id="RrM-mA-ihj">
+            <connections>
+                <action selector="tapGestureRecognizerAction:" destination="tPB-vs-EMS" id="OVM-9s-Qu2"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
