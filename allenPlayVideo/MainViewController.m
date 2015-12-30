@@ -11,7 +11,7 @@
 
 @interface MainViewController ()
 
-@property(nonatomic, strong) PlayVideoView *PlayVideo;
+@property(nonatomic, strong) PlayVideoView *playVideo;
 
 @end
 
@@ -22,12 +22,16 @@
 - (void)setupInitValue {
     self.title = @"MainView";
 }
+
 - (void)setupVideoView {
-    self.PlayVideo = [PlayVideoView new];
-    [self.view addSubview:self.PlayVideo];
+    self.playVideo = [PlayVideoView new];
+    [self.view addSubview:self.playVideo];
     NSArray *array = @[@"like", @"Movie", @"我能給的"];
-    [self.PlayVideo initVideoData:array];
+    [self.playVideo initVideoData:array];
 }
+
+#pragma mark - life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupInitValue];

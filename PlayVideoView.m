@@ -229,7 +229,7 @@ typedef enum {
      }];
 }
 
-#pragma mark - KVO
+#pragma mark * file
 
 - (NSString *)playVideo:(NSString *)videoName pathType:(PathType)pathType {
     NSString *path = [self pathVideoName:videoName fromDocument:pathType];
@@ -250,31 +250,33 @@ typedef enum {
             }
             break;
         }
-
+            
         case PathTypeFromDocument:
         {
             NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             path = [documentPath[0] stringByAppendingString:[NSString stringWithFormat:@"/%@.m4v", videoName]];
             break;
         }
-
+            
         case PathTypeFromResource:
         {
             path = [[NSBundle mainBundle] pathForResource:videoName ofType:@".m4v"];
             break;
         }
-
+            
         case PathTypeFromURL:
         {
             return videoName;
         }
     }
-
+    
     if (![self isFindMP3:path]) {
         path = [NSString new];
     }
     return path;
 }
+
+#pragma mark - KVO
 
 - (BOOL)isFindMP3:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
