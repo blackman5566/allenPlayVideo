@@ -21,6 +21,10 @@
 		E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C6221C31395900E05FC4 /* PlayVideoView.m */; };
 		E464C6271C316DAD00E05FC4 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C6261C316DAD00E05FC4 /* PlayVideoView.xib */; };
 		E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */; };
+		E4F049491C33ADBC0084B6D8 /* DaiYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */; };
+		E4F0494A1C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */; };
+		E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */; };
+		E4F0494C1C33ADBC0084B6D8 /* YoutubeParserBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,14 @@
 		E464C6221C31395900E05FC4 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
 		E464C6261C316DAD00E05FC4 /* PlayVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
 		E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Default-568h@2x.jpg"; sourceTree = "<group>"; };
+		E4F049411C33ADBC0084B6D8 /* DaiYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParser.h; sourceTree = "<group>"; };
+		E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParser.m; sourceTree = "<group>"; };
+		E4F049431C33ADBC0084B6D8 /* DaiYoutubeParserDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserDefine.h; sourceTree = "<group>"; };
+		E4F049441C33ADBC0084B6D8 /* DaiYoutubeParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserOperation.h; sourceTree = "<group>"; };
+		E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserOperation.m; sourceTree = "<group>"; };
+		E4F049461C33ADBC0084B6D8 /* DaiYoutubeParserWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserWebView.h; sourceTree = "<group>"; };
+		E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserWebView.m; sourceTree = "<group>"; };
+		E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YoutubeParserBridge.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,7 @@
 			children = (
 				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
 				E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */,
+				E4F0495A1C33C2A00084B6D8 /* ThirdParty */,
 				E464C6071C30DCDB00E05FC4 /* AllenPlayVideoClass */,
 				E464C5E51C30D7C300E05FC4 /* allenPlayVideo */,
 				E464C5E41C30D7C300E05FC4 /* Products */,
@@ -139,6 +152,30 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
+		E4F049401C33ADBC0084B6D8 /* DaiYoutubeParser */ = {
+			isa = PBXGroup;
+			children = (
+				E4F049411C33ADBC0084B6D8 /* DaiYoutubeParser.h */,
+				E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */,
+				E4F049431C33ADBC0084B6D8 /* DaiYoutubeParserDefine.h */,
+				E4F049441C33ADBC0084B6D8 /* DaiYoutubeParserOperation.h */,
+				E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */,
+				E4F049461C33ADBC0084B6D8 /* DaiYoutubeParserWebView.h */,
+				E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */,
+				E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */,
+			);
+			name = DaiYoutubeParser;
+			path = allenPlayVideo/DaiYoutubeParser;
+			sourceTree = "<group>";
+		};
+		E4F0495A1C33C2A00084B6D8 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				E4F049401C33ADBC0084B6D8 /* DaiYoutubeParser */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F0494C1C33ADBC0084B6D8 /* YoutubeParserBridge.html in Resources */,
 				E464C60E1C30E30900E05FC4 /* DownloadViewController.xib in Resources */,
 				E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */,
 				E464C6271C316DAD00E05FC4 /* PlayVideoView.xib in Resources */,
@@ -217,8 +255,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */,
+				E4F0494A1C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */,
+				E4F049491C33ADBC0084B6D8 /* DaiYoutubeParser.m in Sources */,
+				E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
 				E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */,
 			);
