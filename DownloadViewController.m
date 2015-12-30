@@ -11,19 +11,20 @@
 #import "DaiYoutubeParser.h"
 #import "UIView+AnimationExtensions.h"
 
-@interface DownloadViewController ()
+@interface DownloadViewController () <NSURLSessionDownloadDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *downloadButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @property (strong, nonatomic) NSString *youtubeVideoID;
-
+@property (strong, nonatomic) NSString *videoTitle;
 @end
 
 @implementation DownloadViewController
 
 #pragma mark - UIButton Action
+
 - (IBAction)downLoadButtonAction:(id)sender {
     [self downLoadVideo];
 }
@@ -39,17 +40,17 @@
     // https://www.youtube.com/watch?v=ce_MeFj_BWE
     // 回
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
-    
+
     // 第二種
     // http://youtu.be/ce_MeFj_BWE
     // 回
     // https://m.youtube.com/watch?feature=youtu.be&v=ce_MeFj_BWE
-    
+
     // 第三種
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
     // 回
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
-    
+
     NSString *urlString = webView.request.URL.absoluteString;
     NSArray *splitUsingEqual = [urlString componentsSeparatedByString:@"="];
     self.youtubeVideoID = [splitUsingEqual lastObject];
@@ -60,27 +61,46 @@
 - (void)downLoadVideo {
     CGSize videoSize = self.webView.frame.size;
     [DaiYoutubeParser parse:self.youtubeVideoID screenSize:videoSize videoQuality:DaiYoutubeParserQualityLarge completion: ^(DaiYoutubeParserStatus status, NSString *url, NSString *videoTitle, NSNumber *videoDuration) {
-        NSURL *videoUrl = [NSURL URLWithString:url];
-        if (status) {
-            NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl] completionHandler: ^(NSURL *_Nullable location, NSURLResponse *_Nullable response, NSError *_Nullable error) {
-                if (location && !error) {
-                    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-                    NSString *fileName = [NSString stringWithFormat:@"%@.m4v", videoTitle];
-                    NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
-                    [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
-                     NSLog(@"tempURL = %@",tempURL);
-                }
-                
-            }];
-            [task resume];
-        }
-        else {
-            NSLog(@"please check url or network !!");
-        }
-    }];
-    
+         NSURL *videoUrl = [NSURL URLWithString:url];
+         if (status) {
+             self.videoTitle = videoTitle;
+             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+             NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+             NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl]];
+             [task resume];
+         }
+         else {
+             NSLog(@"please check url or network !!");
+         }
+     }];
 }
-#pragma mark * init
+
+#pragma mark - NSURLSessionDownloadDelegate
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+    didWriteData:(int64_t)bytesWritten
+    totalBytesWritten:(int64_t)totalBytesWritten
+    totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    if (totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown) {
+        float percent = (float)totalBytesWritten / totalBytesExpectedToWrite;
+        NSLog(@"%f", percent);
+    }
+    else {
+
+    }
+}
+
+- (void)URLSession:(NSURLSession *)session
+    downloadTask:(NSURLSessionDownloadTask *)downloadTask
+    didFinishDownloadingToURL:(NSURL *)location {
+    if (location) {
+        NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+        NSString *fileName = [NSString stringWithFormat:@"%@.m4v", self.videoTitle];
+        NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
+        [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
+    }
+}
+
+#pragma mark - init
 
 - (void)setupWebView {
     self.webView.scalesPageToFit = YES;
