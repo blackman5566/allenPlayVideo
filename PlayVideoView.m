@@ -52,6 +52,7 @@ typedef enum {
     }
     self.isHide = !self.isHide;
 }
+
 #pragma mark - IBAction Action
 
 - (IBAction)periousVideoButtonAction:(id)sender {
@@ -276,12 +277,12 @@ typedef enum {
     return path;
 }
 
-#pragma mark - KVO
-
 - (BOOL)isFindMP3:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     return [fileManager fileExistsAtPath:path] ? YES : NO;
 }
+
+#pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //AVPlayerItem *playerItem = (AVPlayerItem *)object;
@@ -291,22 +292,6 @@ typedef enum {
             [self addProgressBarUpdate];
         }
     }
-}
-
-- (void)addObservers {
-    // 使用 KVO 監聽 playerItem 狀態
-    [self.player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(nextVideoButtonAction)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:nil];
-}
-
-- (void)removeAllObserver {
-    // 移除監聽
-    [self.player.currentItem removeObserver:self forKeyPath:@"status"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 - (void)addProgressBarUpdate {
@@ -324,6 +309,22 @@ typedef enum {
              weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
          }
      }];
+}
+
+- (void)addObservers {
+    // 使用 KVO 監聽 playerItem 狀態
+    [self.player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(nextVideoButtonAction)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:nil];
+}
+
+- (void)removeAllObserver {
+    // 移除監聽
+    [self.player.currentItem removeObserver:self forKeyPath:@"status"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 @end
