@@ -26,7 +26,7 @@
 - (void)setupVideoView {
     self.playVideo = [PlayVideoView new];
     [self.view addSubview:self.playVideo];
-    NSArray *array = @[@"like", @"Movie", @"我能給的"];
+    NSArray *array = @[@"like", @"Movie", @"我能給的",@"蘇打綠 sodagreen -【追追追】Official Music Video"];
     [self.playVideo initVideoData:array];
 }
 

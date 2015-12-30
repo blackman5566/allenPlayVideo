@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadViewController">
             <connections>
+                <outlet property="downloadButton" destination="eLq-ZX-e8U" id="7uE-Ia-VXy"/>
                 <outlet property="urlTextField" destination="lBJ-me-yIR" id="XG2-Gw-dqc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="WPH-6z-9Rn" id="eds-gz-aRP"/>
@@ -25,7 +26,7 @@
                     </connections>
                 </webView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://m.youtube.com/watch?v=ce_MeFj_BWE" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBJ-me-yIR">
-                    <rect key="frame" x="-78" y="65" width="342" height="30"/>
+                    <rect key="frame" x="56" y="65" width="208" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -34,6 +35,14 @@
                     <state key="normal" title="GO"/>
                     <connections>
                         <action selector="loadWebPage:" destination="-1" eventType="touchUpInside" id="Y85-i2-igK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-ZX-e8U">
+                    <rect key="frame" x="8" y="64" width="40" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="D"/>
+                    <connections>
+                        <action selector="downLoadButtonAction:" destination="-1" eventType="touchUpInside" id="jAO-vT-Vrp"/>
                     </connections>
                 </button>
             </subviews>
