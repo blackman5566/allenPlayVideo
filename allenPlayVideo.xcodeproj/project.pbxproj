@@ -7,63 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E96BCC01C35001200C189A9 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCBE1C35001200C189A9 /* DownloadViewController.m */; };
+		7E96BCC11C35001200C189A9 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E96BCBF1C35001200C189A9 /* DownloadViewController.xib */; };
+		7E96BCC61C35003300C189A9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCC41C35003300C189A9 /* MainViewController.m */; };
+		7E96BCC71C35003300C189A9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E96BCC51C35003300C189A9 /* MainViewController.xib */; };
+		7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD11C35011A00C189A9 /* DaiYoutubeParser.m */; };
+		7E96BCDC1C35011A00C189A9 /* DaiYoutubeParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD41C35011A00C189A9 /* DaiYoutubeParserOperation.m */; };
+		7E96BCDD1C35011A00C189A9 /* DaiYoutubeParserWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD61C35011A00C189A9 /* DaiYoutubeParserWebView.m */; };
+		7E96BCDE1C35011A00C189A9 /* YoutubeParserBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = 7E96BCD71C35011A00C189A9 /* YoutubeParserBridge.html */; };
+		7E96BCDF1C35011A00C189A9 /* UIView+AnimationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCDA1C35011A00C189A9 /* UIView+AnimationExtensions.m */; };
+		7E96BCED1C3501FF00C189A9 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCEB1C3501FF00C189A9 /* PlayVideoView.m */; };
+		7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E96BCEC1C3501FF00C189A9 /* PlayVideoView.xib */; };
 		E464C5E81C30D7C300E05FC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5E71C30D7C300E05FC4 /* main.m */; };
 		E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */; };
 		E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F21C30D7C300E05FC4 /* Assets.xcassets */; };
 		E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */; };
-		E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */; };
-		E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */; };
-		E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C60B1C30E30900E05FC4 /* DownloadViewController.m */; };
-		E464C60E1C30E30900E05FC4 /* DownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */; };
 		E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61B1C312C2F00E05FC4 /* like.m4v */; };
 		E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61C1C312C2F00E05FC4 /* Movie.m4v */; };
 		E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */; };
-		E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C6221C31395900E05FC4 /* PlayVideoView.m */; };
-		E464C6271C316DAD00E05FC4 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464C6261C316DAD00E05FC4 /* PlayVideoView.xib */; };
 		E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */; };
-		E4F049491C33ADBC0084B6D8 /* DaiYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */; };
-		E4F0494A1C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */; };
-		E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */; };
-		E4F0494C1C33ADBC0084B6D8 /* YoutubeParserBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */; };
-		E4F0495E1C33D33B0084B6D8 /* UIView+AnimationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */; };
-		E4F049721C34D5E10084B6D8 /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */; };
-		E4F049731C34D5E10084B6D8 /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E96BCBD1C35001200C189A9 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
+		7E96BCBE1C35001200C189A9 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
+		7E96BCBF1C35001200C189A9 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadViewController.xib; sourceTree = "<group>"; };
+		7E96BCC31C35003300C189A9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7E96BCC41C35003300C189A9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7E96BCC51C35003300C189A9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		7E96BCD01C35011A00C189A9 /* DaiYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParser.h; sourceTree = "<group>"; };
+		7E96BCD11C35011A00C189A9 /* DaiYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParser.m; sourceTree = "<group>"; };
+		7E96BCD21C35011A00C189A9 /* DaiYoutubeParserDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserDefine.h; sourceTree = "<group>"; };
+		7E96BCD31C35011A00C189A9 /* DaiYoutubeParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserOperation.h; sourceTree = "<group>"; };
+		7E96BCD41C35011A00C189A9 /* DaiYoutubeParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserOperation.m; sourceTree = "<group>"; };
+		7E96BCD51C35011A00C189A9 /* DaiYoutubeParserWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserWebView.h; sourceTree = "<group>"; };
+		7E96BCD61C35011A00C189A9 /* DaiYoutubeParserWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserWebView.m; sourceTree = "<group>"; };
+		7E96BCD71C35011A00C189A9 /* YoutubeParserBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YoutubeParserBridge.html; sourceTree = "<group>"; };
+		7E96BCD91C35011A00C189A9 /* UIView+AnimationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimationExtensions.h"; sourceTree = "<group>"; };
+		7E96BCDA1C35011A00C189A9 /* UIView+AnimationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AnimationExtensions.m"; sourceTree = "<group>"; };
+		7E96BCEA1C3501FF00C189A9 /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
+		7E96BCEB1C3501FF00C189A9 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
+		7E96BCEC1C3501FF00C189A9 /* PlayVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
 		E464C5E31C30D7C300E05FC4 /* allenPlayVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allenPlayVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E464C5E71C30D7C300E05FC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E464C5E91C30D7C300E05FC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = allenPlayVideo/AppDelegate.h; sourceTree = "<group>"; };
-		E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = allenPlayVideo/AppDelegate.m; sourceTree = "<group>"; };
+		E464C5E91C30D7C300E05FC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E464C5F21C30D7C300E05FC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E464C5F51C30D7C300E05FC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E464C5F71C30D7C300E05FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E464C5FD1C30DB4B00E05FC4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		E464C60A1C30E30900E05FC4 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadViewController.h; path = ../DownloadViewController.h; sourceTree = "<group>"; };
-		E464C60B1C30E30900E05FC4 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadViewController.m; path = ../DownloadViewController.m; sourceTree = "<group>"; };
-		E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DownloadViewController.xib; path = ../DownloadViewController.xib; sourceTree = "<group>"; };
 		E464C61B1C312C2F00E05FC4 /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
 		E464C61C1C312C2F00E05FC4 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
 		E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我能給的.m4v"; sourceTree = "<group>"; };
-		E464C6211C31395900E05FC4 /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
-		E464C6221C31395900E05FC4 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
-		E464C6261C316DAD00E05FC4 /* PlayVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
 		E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Default-568h@2x.jpg"; sourceTree = "<group>"; };
-		E4F049411C33ADBC0084B6D8 /* DaiYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParser.h; sourceTree = "<group>"; };
-		E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParser.m; sourceTree = "<group>"; };
-		E4F049431C33ADBC0084B6D8 /* DaiYoutubeParserDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserDefine.h; sourceTree = "<group>"; };
-		E4F049441C33ADBC0084B6D8 /* DaiYoutubeParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserOperation.h; sourceTree = "<group>"; };
-		E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserOperation.m; sourceTree = "<group>"; };
-		E4F049461C33ADBC0084B6D8 /* DaiYoutubeParserWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserWebView.h; sourceTree = "<group>"; };
-		E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParserWebView.m; sourceTree = "<group>"; };
-		E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YoutubeParserBridge.html; sourceTree = "<group>"; };
-		E4F0495C1C33D33B0084B6D8 /* UIView+AnimationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimationExtensions.h"; sourceTree = "<group>"; };
-		E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AnimationExtensions.m"; sourceTree = "<group>"; };
-		E4F0496F1C34D5E10084B6D8 /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
-		E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
-		E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,13 +72,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E96BCBC1C35001200C189A9 /* DownloadViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCBD1C35001200C189A9 /* DownloadViewController.h */,
+				7E96BCBE1C35001200C189A9 /* DownloadViewController.m */,
+				7E96BCBF1C35001200C189A9 /* DownloadViewController.xib */,
+			);
+			path = DownloadViewController;
+			sourceTree = "<group>";
+		};
+		7E96BCC21C35003300C189A9 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCC31C35003300C189A9 /* MainViewController.h */,
+				7E96BCC41C35003300C189A9 /* MainViewController.m */,
+				7E96BCC51C35003300C189A9 /* MainViewController.xib */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		7E96BCCE1C35011A00C189A9 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCCF1C35011A00C189A9 /* DaiYoutubeParser */,
+				7E96BCD81C35011A00C189A9 /* UIView+AnimationExtensions */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		7E96BCCF1C35011A00C189A9 /* DaiYoutubeParser */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCD01C35011A00C189A9 /* DaiYoutubeParser.h */,
+				7E96BCD11C35011A00C189A9 /* DaiYoutubeParser.m */,
+				7E96BCD21C35011A00C189A9 /* DaiYoutubeParserDefine.h */,
+				7E96BCD31C35011A00C189A9 /* DaiYoutubeParserOperation.h */,
+				7E96BCD41C35011A00C189A9 /* DaiYoutubeParserOperation.m */,
+				7E96BCD51C35011A00C189A9 /* DaiYoutubeParserWebView.h */,
+				7E96BCD61C35011A00C189A9 /* DaiYoutubeParserWebView.m */,
+				7E96BCD71C35011A00C189A9 /* YoutubeParserBridge.html */,
+			);
+			path = DaiYoutubeParser;
+			sourceTree = "<group>";
+		};
+		7E96BCD81C35011A00C189A9 /* UIView+AnimationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCD91C35011A00C189A9 /* UIView+AnimationExtensions.h */,
+				7E96BCDA1C35011A00C189A9 /* UIView+AnimationExtensions.m */,
+			);
+			path = "UIView+AnimationExtensions";
+			sourceTree = "<group>";
+		};
+		7E96BCE71C3501FF00C189A9 /* Commom */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCE81C3501FF00C189A9 /* Views */,
+			);
+			path = Commom;
+			sourceTree = "<group>";
+		};
+		7E96BCE81C3501FF00C189A9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCE91C3501FF00C189A9 /* PlayVideoView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E96BCE91C3501FF00C189A9 /* PlayVideoView */ = {
+			isa = PBXGroup;
+			children = (
+				7E96BCEA1C3501FF00C189A9 /* PlayVideoView.h */,
+				7E96BCEB1C3501FF00C189A9 /* PlayVideoView.m */,
+				7E96BCEC1C3501FF00C189A9 /* PlayVideoView.xib */,
+			);
+			path = PlayVideoView;
+			sourceTree = "<group>";
+		};
 		E464C5DA1C30D7C300E05FC4 = {
 			isa = PBXGroup;
 			children = (
-				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
-				E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */,
-				E4F0495A1C33C2A00084B6D8 /* ThirdParty */,
-				E464C6071C30DCDB00E05FC4 /* AllenPlayVideoClass */,
 				E464C5E51C30D7C300E05FC4 /* allenPlayVideo */,
 				E464C5E41C30D7C300E05FC4 /* Products */,
 			);
@@ -100,8 +170,12 @@
 		E464C5E51C30D7C300E05FC4 /* allenPlayVideo */ = {
 			isa = PBXGroup;
 			children = (
-				E464C6101C30E32500E05FC4 /* DownloadViewController */,
-				E464C60F1C30E31700E05FC4 /* MainViewController */,
+				7E96BCCE1C35011A00C189A9 /* ThirdParty */,
+				7E96BCE71C3501FF00C189A9 /* Commom */,
+				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
+				E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */,
+				7E96BCC21C35003300C189A9 /* MainViewController */,
+				7E96BCBC1C35001200C189A9 /* DownloadViewController */,
 				E464C5F21C30D7C300E05FC4 /* Assets.xcassets */,
 				E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */,
 				E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */,
@@ -120,37 +194,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E464C6071C30DCDB00E05FC4 /* AllenPlayVideoClass */ = {
-			isa = PBXGroup;
-			children = (
-				E464C6211C31395900E05FC4 /* PlayVideoView.h */,
-				E464C6221C31395900E05FC4 /* PlayVideoView.m */,
-				E464C6261C316DAD00E05FC4 /* PlayVideoView.xib */,
-			);
-			name = AllenPlayVideoClass;
-			sourceTree = "<group>";
-		};
-		E464C60F1C30E31700E05FC4 /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E464C5FD1C30DB4B00E05FC4 /* MainViewController.h */,
-				E464C5FE1C30DB4B00E05FC4 /* MainViewController.m */,
-				E464C5FF1C30DB4B00E05FC4 /* MainViewController.xib */,
-			);
-			name = MainViewController;
-			sourceTree = "<group>";
-		};
-		E464C6101C30E32500E05FC4 /* DownloadViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E464C60A1C30E30900E05FC4 /* DownloadViewController.h */,
-				E464C60B1C30E30900E05FC4 /* DownloadViewController.m */,
-				E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */,
-				E4F049741C34D5F30084B6D8 /* DownloadListViewController */,
-			);
-			name = DownloadViewController;
-			sourceTree = "<group>";
-		};
 		E464C61A1C312C2F00E05FC4 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,50 +202,6 @@
 				E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */,
 			);
 			path = Videos;
-			sourceTree = "<group>";
-		};
-		E4F049401C33ADBC0084B6D8 /* DaiYoutubeParser */ = {
-			isa = PBXGroup;
-			children = (
-				E4F049411C33ADBC0084B6D8 /* DaiYoutubeParser.h */,
-				E4F049421C33ADBC0084B6D8 /* DaiYoutubeParser.m */,
-				E4F049431C33ADBC0084B6D8 /* DaiYoutubeParserDefine.h */,
-				E4F049441C33ADBC0084B6D8 /* DaiYoutubeParserOperation.h */,
-				E4F049451C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m */,
-				E4F049461C33ADBC0084B6D8 /* DaiYoutubeParserWebView.h */,
-				E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */,
-				E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */,
-			);
-			name = DaiYoutubeParser;
-			path = allenPlayVideo/DaiYoutubeParser;
-			sourceTree = "<group>";
-		};
-		E4F0495A1C33C2A00084B6D8 /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				E4F0495B1C33D33B0084B6D8 /* UIView+AnimationExtensions */,
-				E4F049401C33ADBC0084B6D8 /* DaiYoutubeParser */,
-			);
-			name = ThirdParty;
-			sourceTree = "<group>";
-		};
-		E4F0495B1C33D33B0084B6D8 /* UIView+AnimationExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				E4F0495C1C33D33B0084B6D8 /* UIView+AnimationExtensions.h */,
-				E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */,
-			);
-			path = "UIView+AnimationExtensions";
-			sourceTree = "<group>";
-		};
-		E4F049741C34D5F30084B6D8 /* DownloadListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E4F0496F1C34D5E10084B6D8 /* DownloadListViewController.h */,
-				E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */,
-				E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */,
-			);
-			name = DownloadListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,15 +262,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F0494C1C33ADBC0084B6D8 /* YoutubeParserBridge.html in Resources */,
-				E464C60E1C30E30900E05FC4 /* DownloadViewController.xib in Resources */,
+				7E96BCDE1C35011A00C189A9 /* YoutubeParserBridge.html in Resources */,
+				7E96BCC11C35001200C189A9 /* DownloadViewController.xib in Resources */,
 				E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */,
-				E464C6271C316DAD00E05FC4 /* PlayVideoView.xib in Resources */,
-				E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */,
 				E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */,
 				E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */,
-				E4F049731C34D5E10084B6D8 /* DownloadListViewController.xib in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
+				7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */,
+				7E96BCC71C35003300C189A9 /* MainViewController.xib in Resources */,
 				E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */,
 				E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */,
 			);
@@ -284,16 +282,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E464C6241C31395900E05FC4 /* PlayVideoView.m in Sources */,
-				E4F0494A1C33ADBC0084B6D8 /* DaiYoutubeParserOperation.m in Sources */,
+				7E96BCED1C3501FF00C189A9 /* PlayVideoView.m in Sources */,
+				7E96BCDC1C35011A00C189A9 /* DaiYoutubeParserOperation.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
-				E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */,
-				E4F049491C33ADBC0084B6D8 /* DaiYoutubeParser.m in Sources */,
-				E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */,
-				E4F049721C34D5E10084B6D8 /* DownloadListViewController.m in Sources */,
+				7E96BCC61C35003300C189A9 /* MainViewController.m in Sources */,
+				7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */,
+				7E96BCDD1C35011A00C189A9 /* DaiYoutubeParserWebView.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
-				E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */,
-				E4F0495E1C33D33B0084B6D8 /* UIView+AnimationExtensions.m in Sources */,
+				7E96BCC01C35001200C189A9 /* DownloadViewController.m in Sources */,
+				7E96BCDF1C35011A00C189A9 /* UIView+AnimationExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
