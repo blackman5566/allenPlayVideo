@@ -10,6 +10,7 @@
 #import "DaiYoutubeParser.h"
 #import "DaiYoutubeParser.h"
 #import "UIView+AnimationExtensions.h"
+#import "AppDelegate.h"
 
 @interface DownloadViewController () <NSURLSessionDownloadDelegate>
 
@@ -19,6 +20,8 @@
 
 @property (strong, nonatomic) NSString *youtubeVideoID;
 @property (strong, nonatomic) NSString *videoTitle;
+@property (strong, nonatomic) NSMutableDictionary *listTakeDictionary;
+
 @end
 
 @implementation DownloadViewController
@@ -65,10 +68,9 @@
          NSURL *videoUrl = [NSURL URLWithString:url];
          if (status) {
              self.videoTitle = videoTitle;
-             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-             NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-             NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl]];
+             NSURLSessionDownloadTask *task = [[self backgroundSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl]];
              [task resume];
+            
          }
          else {
              NSLog(@"please check url or network !!");
@@ -77,6 +79,27 @@
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
+
+- (NSURLSession *)backgroundSession {
+    static NSURLSession *session = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.hiiir.allenPlayVideo.BackgroundSession"];
+        session = [NSURLSession sessionWithConfiguration:configuration
+                                                delegate:self
+                                           delegateQueue:nil];
+    });
+    return session;
+}
+
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.backgroundSessionCompletionHandler) {
+        void (^completionHandler)() = appDelegate.backgroundSessionCompletionHandler;
+        appDelegate.backgroundSessionCompletionHandler = nil;
+        completionHandler();
+    }
+}
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didWriteData:(int64_t)bytesWritten
@@ -114,6 +137,7 @@
 - (void)setupInitValue {
     self.title = @"下載";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.listTakeDictionary = [NSMutableDictionary new];
 }
 
 - (void)setupNaviButton {
@@ -124,9 +148,10 @@
     self.navigationItem.leftBarButtonItem = listButton;
 }
 
--(void)openListView{
-    
+- (void)openListView {
+
 }
+
 #pragma mark - life cycle
 
 - (void)viewDidLoad {

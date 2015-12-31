@@ -34,4 +34,11 @@
     downNavigationController.tabBarItem = downButton;
     return @[[MainViewController new], downNavigationController];
 }
+
+- (void)application:(UIApplication *)application
+handleEventsForBackgroundURLSession:(NSString *)identifier
+  completionHandler:(void (^)())completionHandler
+{
+    self.backgroundSessionCompletionHandler = completionHandler;
+}
 @end

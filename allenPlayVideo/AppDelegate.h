@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBar;
+@property (copy, nonatomic) void (^backgroundSessionCompletionHandler)();
 
 @end
 
