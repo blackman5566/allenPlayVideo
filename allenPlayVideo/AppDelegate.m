@@ -9,12 +9,14 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "DownloadViewController.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
+#pragma mark - life cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -25,20 +27,28 @@
     return YES;
 }
 
-- (NSArray *)generatorViewControllers {
-    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
-    UITabBarItem *mainButton = [[UITabBarItem alloc] initWithTitle:@"" image:[UIImage imageNamed:@"play.png"] selectedImage:[UIImage imageNamed:@"played.png"]];
-    mainNavigationController.tabBarItem = mainButton;
-    UINavigationController *downNavigationController = [[UINavigationController alloc] initWithRootViewController:[DownloadViewController new]];
-    UITabBarItem *downButton = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"download.png"] selectedImage:[UIImage imageNamed:@"download.png"]];
-    downNavigationController.tabBarItem = downButton;
-    return @[[MainViewController new], downNavigationController];
-}
-
-- (void)application:(UIApplication *)application
-handleEventsForBackgroundURLSession:(NSString *)identifier
-  completionHandler:(void (^)())completionHandler
-{
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
     self.backgroundSessionCompletionHandler = completionHandler;
 }
+
+#pragma mark - private instance method
+
+#pragma mark * init
+
+- (NSArray *)generatorViewControllers {
+    NSArray *viewControllers = @[[MainViewController new], [DownloadViewController new]];
+    NSArray *selectImages = @[@"play", @"download2"];
+    NSArray *selectedImages = @[@"played", @"download"];
+    NSMutableArray *naviViewControllers = [NSMutableArray new];
+    for (int i = 0; i < viewControllers.count; i++) {
+        UINavigationController *naviViewController = [[UINavigationController alloc] initWithRootViewController:viewControllers[i]];
+        UITabBarItem *barItem = [UITabBarItem new];
+        barItem.image = [UIImage imageNamed:selectImages[i]];
+        barItem.selectedImage = [UIImage imageNamed:selectedImages[i]];
+        naviViewController.tabBarItem = barItem;
+        [naviViewControllers addObject:naviViewController];
+    }
+    return naviViewControllers;
+}
+
 @end
