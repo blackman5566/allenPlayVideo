@@ -26,6 +26,8 @@
 		E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049471C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m */; };
 		E4F0494C1C33ADBC0084B6D8 /* YoutubeParserBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */; };
 		E4F0495E1C33D33B0084B6D8 /* UIView+AnimationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */; };
+		E4F049721C34D5E10084B6D8 /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */; };
+		E4F049731C34D5E10084B6D8 /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,9 @@
 		E4F049481C33ADBC0084B6D8 /* YoutubeParserBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YoutubeParserBridge.html; sourceTree = "<group>"; };
 		E4F0495C1C33D33B0084B6D8 /* UIView+AnimationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AnimationExtensions.h"; sourceTree = "<group>"; };
 		E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AnimationExtensions.m"; sourceTree = "<group>"; };
+		E4F0496F1C34D5E10084B6D8 /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
+		E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
+		E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +146,7 @@
 				E464C60A1C30E30900E05FC4 /* DownloadViewController.h */,
 				E464C60B1C30E30900E05FC4 /* DownloadViewController.m */,
 				E464C60C1C30E30900E05FC4 /* DownloadViewController.xib */,
+				E4F049741C34D5F30084B6D8 /* DownloadListViewController */,
 			);
 			name = DownloadViewController;
 			sourceTree = "<group>";
@@ -187,6 +193,16 @@
 				E4F0495D1C33D33B0084B6D8 /* UIView+AnimationExtensions.m */,
 			);
 			path = "UIView+AnimationExtensions";
+			sourceTree = "<group>";
+		};
+		E4F049741C34D5F30084B6D8 /* DownloadListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4F0496F1C34D5E10084B6D8 /* DownloadListViewController.h */,
+				E4F049701C34D5E10084B6D8 /* DownloadListViewController.m */,
+				E4F049711C34D5E10084B6D8 /* DownloadListViewController.xib */,
+			);
+			name = DownloadListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +270,7 @@
 				E464C6011C30DB4B00E05FC4 /* MainViewController.xib in Resources */,
 				E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */,
 				E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */,
+				E4F049731C34D5E10084B6D8 /* DownloadListViewController.xib in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
 				E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */,
 				E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */,
@@ -273,6 +290,7 @@
 				E464C6001C30DB4B00E05FC4 /* MainViewController.m in Sources */,
 				E4F049491C33ADBC0084B6D8 /* DaiYoutubeParser.m in Sources */,
 				E4F0494B1C33ADBC0084B6D8 /* DaiYoutubeParserWebView.m in Sources */,
+				E4F049721C34D5E10084B6D8 /* DownloadListViewController.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
 				E464C60D1C30E30900E05FC4 /* DownloadViewController.m in Sources */,
 				E4F0495E1C33D33B0084B6D8 /* UIView+AnimationExtensions.m in Sources */,

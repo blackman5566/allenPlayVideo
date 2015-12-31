@@ -50,7 +50,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="14" y="389"/>
+            <point key="canvasLocation" x="-237" y="384"/>
         </view>
     </objects>
 </document>

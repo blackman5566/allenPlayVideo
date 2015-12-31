@@ -53,7 +53,7 @@
 
     NSString *urlString = webView.request.URL.absoluteString;
     NSArray *splitUsingEqual = [urlString componentsSeparatedByString:@"="];
-    NSLog(@"urlString = %@",urlString);
+    NSLog(@"urlString = %@", urlString);
     self.youtubeVideoID = [splitUsingEqual lastObject];
 }
 
@@ -116,12 +116,24 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
+- (void)setupNaviButton {
+    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"下載進度"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(openListView)];
+    self.navigationItem.leftBarButtonItem = listButton;
+}
+
+-(void)openListView{
+    
+}
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupInitValue];
     [self setupWebView];
+    [self setupNaviButton];
     [self.downloadButton pulseToSize:1.2f duration:0.4f repeat:YES];
 }
 
