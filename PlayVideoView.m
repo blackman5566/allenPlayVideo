@@ -251,26 +251,26 @@ typedef enum {
             }
             break;
         }
-            
+
         case PathTypeFromDocument:
         {
             NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             path = [documentPath[0] stringByAppendingString:[NSString stringWithFormat:@"/%@.m4v", videoName]];
             break;
         }
-            
+
         case PathTypeFromResource:
         {
             path = [[NSBundle mainBundle] pathForResource:videoName ofType:@".m4v"];
             break;
         }
-            
+
         case PathTypeFromURL:
         {
             return videoName;
         }
     }
-    
+
     if (![self isFindMP3:path]) {
         path = [NSString new];
     }

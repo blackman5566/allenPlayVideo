@@ -20,7 +20,7 @@
 #pragma mark - private method
 
 - (void)setupInitValue {
-    self.title = @"MainView";
+    self.title = @"影片";
 }
 
 - (void)setupVideoView {

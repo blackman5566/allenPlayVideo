@@ -38,21 +38,22 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     // 第一種
     // https://www.youtube.com/watch?v=ce_MeFj_BWE
-    // 回
+    // webView 回的格式為
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
 
     // 第二種
     // http://youtu.be/ce_MeFj_BWE
-    // 回
+    // webView 回的格式為
     // https://m.youtube.com/watch?feature=youtu.be&v=ce_MeFj_BWE
 
     // 第三種
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
-    // 回
+    // webView 回的格式為
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
 
     NSString *urlString = webView.request.URL.absoluteString;
     NSArray *splitUsingEqual = [urlString componentsSeparatedByString:@"="];
+    NSLog(@"urlString = %@",urlString);
     self.youtubeVideoID = [splitUsingEqual lastObject];
 }
 
@@ -76,6 +77,7 @@
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
+
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didWriteData:(int64_t)bytesWritten
     totalBytesWritten:(int64_t)totalBytesWritten
@@ -110,7 +112,7 @@
 }
 
 - (void)setupInitValue {
-    self.title = @"download";
+    self.title = @"下載";
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
