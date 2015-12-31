@@ -25,8 +25,8 @@
                         <outlet property="delegate" destination="-1" id="evq-cQ-b3A"/>
                     </connections>
                 </webView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://m.youtube.com/watch?v=ce_MeFj_BWE" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBJ-me-yIR">
-                    <rect key="frame" x="56" y="65" width="208" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.youtube.com/watch?v=AUg9OG5i4wQ&amp;list=PLsyOSbh5bs16vubvKePAQ1x3PhKavfBIl&amp;index=7" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBJ-me-yIR">
+                    <rect key="frame" x="-450" y="65" width="714" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>

@@ -54,10 +54,19 @@
     // webView 回的格式為
     // https://m.youtube.com/watch?v=ce_MeFj_BWE
 
-    NSString *urlString = webView.request.URL.absoluteString;
-    NSArray *splitUsingEqual = [urlString componentsSeparatedByString:@"="];
-    NSLog(@"urlString = %@", urlString);
-    self.youtubeVideoID = [splitUsingEqual lastObject];
+    // 第四種
+    // https://www.youtube.com/watch?v=2AUhPKJvslo&index=2&list=RDGV3Bz2_Pw98
+    // webView 回的格式為
+    // https://m.youtube.com/watch?index=7&v=AUg9OG5i4wQ&list=PLsyOSbh5bs16vubvKePAQ1x3PhKavfBIl
+    
+    NSURL *url = webView.request.URL;
+    NSArray *splitUsingAnd = [url.query componentsSeparatedByString:@"&"];
+    for (NSString *keyWord in splitUsingAnd) {
+        NSArray *splitUsingEqual = [keyWord componentsSeparatedByString:@"="];
+        if ([splitUsingEqual[0] isEqualToString:@"v"]) {
+            self.youtubeVideoID = [splitUsingEqual lastObject];
+        }
+    }
 }
 
 #pragma mark - instance private method
@@ -70,7 +79,7 @@
              self.videoTitle = videoTitle;
              NSURLSessionDownloadTask *task = [[self backgroundSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl]];
              [task resume];
-            
+
          }
          else {
              NSLog(@"please check url or network !!");
