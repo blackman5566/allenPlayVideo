@@ -18,6 +18,7 @@
 		7E96BCDF1C35011A00C189A9 /* UIView+AnimationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCDA1C35011A00C189A9 /* UIView+AnimationExtensions.m */; };
 		7E96BCED1C3501FF00C189A9 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCEB1C3501FF00C189A9 /* PlayVideoView.m */; };
 		7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E96BCEC1C3501FF00C189A9 /* PlayVideoView.xib */; };
+		975B4FDB1C3A2C910054CA8A /* DownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 975B4FDA1C3A2C910054CA8A /* DownloadModel.m */; };
 		9790B0091C3A0BAA0027EDFD /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9790B0071C3A0BAA0027EDFD /* DownloadListViewController.m */; };
 		9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9790B0081C3A0BAA0027EDFD /* DownloadListViewController.xib */; };
 		9790B00F1C3A0DF60027EDFD /* DownloadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9790B00D1C3A0DF60027EDFD /* DownloadListCell.m */; };
@@ -52,6 +53,8 @@
 		7E96BCEA1C3501FF00C189A9 /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
 		7E96BCEB1C3501FF00C189A9 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
 		7E96BCEC1C3501FF00C189A9 /* PlayVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
+		975B4FD91C3A2C910054CA8A /* DownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadModel.h; sourceTree = "<group>"; };
+		975B4FDA1C3A2C910054CA8A /* DownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadModel.m; sourceTree = "<group>"; };
 		9790B0061C3A0BAA0027EDFD /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
 		9790B0071C3A0BAA0027EDFD /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
 		9790B0081C3A0BAA0027EDFD /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
@@ -162,6 +165,23 @@
 			path = PlayVideoView;
 			sourceTree = "<group>";
 		};
+		975B4FD81C3A2C710054CA8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				975B4FDC1C3A2C990054CA8A /* DownloadModel */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		975B4FDC1C3A2C990054CA8A /* DownloadModel */ = {
+			isa = PBXGroup;
+			children = (
+				975B4FD91C3A2C910054CA8A /* DownloadModel.h */,
+				975B4FDA1C3A2C910054CA8A /* DownloadModel.m */,
+			);
+			name = DownloadModel;
+			sourceTree = "<group>";
+		};
 		9790B00B1C3A0BB20027EDFD /* DownloadListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +223,7 @@
 		E464C5E51C30D7C300E05FC4 /* allenPlayVideo */ = {
 			isa = PBXGroup;
 			children = (
+				975B4FD81C3A2C710054CA8A /* Model */,
 				7E96BCCE1C35011A00C189A9 /* ThirdParty */,
 				7E96BCE71C3501FF00C189A9 /* Commom */,
 				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
@@ -329,6 +350,7 @@
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
 				7E96BCC01C35001200C189A9 /* SearchVideoViewController.m in Sources */,
 				7E96BCDF1C35011A00C189A9 /* UIView+AnimationExtensions.m in Sources */,
+				975B4FDB1C3A2C910054CA8A /* DownloadModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
