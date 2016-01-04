@@ -13,7 +13,6 @@
 @interface DownloadListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskInfoTableView;
-@property (nonatomic, strong) NSArray *cellInfo;
 
 @end
 
@@ -51,8 +50,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.taskInfoTableView.contentInset = UIEdgeInsetsMake(64, 0, 100, 0);
     self.title = @"下載";
-    self.cellInfo = [DownloadModel fileDownloadDataArrays];
 }
+
 - (void)setupTaskInfoTableView {
     [self.taskInfoTableView registerClass:[DownloadListCell class] forCellReuseIdentifier:@"DownloadListCell"];
 }
@@ -64,9 +63,11 @@
                                                                   action:@selector(openListView)];
     self.navigationItem.leftBarButtonItem = listButton;
 }
+
 - (void)openListView {
     [self.taskInfoTableView reloadData];
 }
+
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
@@ -75,6 +76,7 @@
     [self setupTaskInfoTableView];
     [self setupNaviButton];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [self.taskInfoTableView reloadData];
 }
