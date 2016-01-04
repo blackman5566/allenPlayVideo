@@ -7,11 +7,11 @@
 //
 #import "AppDelegate.h"
 #import "DownloadModel.h"
-#import <objc/runtime.h>
 
 @interface DownloadModel () <NSURLSessionDownloadDelegate>
 
 @property (nonatomic, copy) DownloadFinishCallBackBlock completion;
+@property(nonatomic, strong) NSDictionary *fileInfo;
 
 @end
 
@@ -43,8 +43,8 @@
 
 - (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url completion:(DownloadFinishCallBackBlock)completion {
     self.completion = completion;
-    NSDictionary *fileInfo = @{ @"fileTitle" : videoName, @"downloadSource" :url, @"downloadProgress" :@"0.0", @"isDownloading":@NO, @"taskIdentifier":@0 };
-    [[DownloadModel shared] setTask:fileInfo];
+    self.fileInfo = @{ @"fileTitle" : videoName, @"downloadSource" :url, @"downloadProgress" :@"0.0", @"isDownloading":@NO, @"taskIdentifier":@0, @"taskResumeData":@0 };
+    [[DownloadModel shared] setTask:self.fileInfo];
 }
 
 - (NSDictionary *)getFileDownloadInfoWithTaskIdentifier:(NSNumber *)identifier {
@@ -112,11 +112,11 @@
     NSMutableDictionary *temp = [[NSMutableDictionary alloc] initWithDictionary:fileInfo];
     temp[@"taskIdentifier"] = [NSNumber numberWithInteger:task.taskIdentifier];
     temp[@"isDownloading"] = @YES;
-    fileInfo = temp;
+    temp[@"downloadTask"] = task;
+    self.fileInfo = temp;
     [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
 
     [task resume];
 }
-
 
 @end

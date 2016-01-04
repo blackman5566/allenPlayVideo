@@ -31,7 +31,7 @@
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  [DownloadModel fileDownloadDataArrays].count;
+    return [DownloadModel fileDownloadDataArrays].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,7 +65,7 @@
 }
 
 - (void)openListView {
-    [self.taskInfoTableView reloadData];
+   
 }
 
 #pragma mark - life cycle

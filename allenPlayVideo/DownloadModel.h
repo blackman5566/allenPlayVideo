@@ -14,4 +14,5 @@ typedef void (^DownloadFinishCallBackBlock)();
 
 + (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl completion:(DownloadFinishCallBackBlock)completion;
 + (NSMutableArray *)fileDownloadDataArrays;
+
 @end

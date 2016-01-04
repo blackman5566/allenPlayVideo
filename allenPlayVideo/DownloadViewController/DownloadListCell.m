@@ -7,7 +7,12 @@
 //
 
 #import "DownloadListCell.h"
+#import "DownloadModel.h"
 
+@interface DownloadListCell ()
+
+@property(nonatomic, assign) BOOL isDownloading;
+@end
 @implementation DownloadListCell
 
 #pragma mark - life cycle
@@ -17,6 +22,7 @@
     if (self) {
         NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
         self = arrayOfViews[0];
+        self.isDownloading = YES;
     }
     return self;
 }
@@ -24,6 +30,25 @@
 #pragma mark - Button Action
 
 - (IBAction)downloadAndStopButtonAction:(id)sender {
+    NSIndexPath *indexPath = [[self dependTableView] indexPathForCell:self];
+    if (self.isDownloading) {
+        [self.playAndStopButton setTitle:@"Pause" forState:UIControlStateNormal];
+    }
+    else {
+        [self.playAndStopButton setTitle:@"Downloading" forState:UIControlStateNormal];
+
+    }
+    self.isDownloading = !self.isDownloading;
 }
 
+#pragma mark - private method
+
+- (UITableView *)dependTableView {
+    UIView *findView = self.superview;
+    while (![findView isKindOfClass:[UITableView class]]) {
+        findView = findView.superview;
+    }
+    UITableView *table = (UITableView *)findView;
+    return table;
+}
 @end
