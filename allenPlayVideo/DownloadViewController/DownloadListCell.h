@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DownloadListCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *videoNameLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *playAndStopButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 @end

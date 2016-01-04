@@ -43,7 +43,7 @@
 
 - (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url completion:(DownloadFinishCallBackBlock)completion {
     self.completion = completion;
-    NSDictionary *fileInfo = @{ @"fileTitle" : videoName, @"downloadSource" :url, @"downloadProgress" :@0.0, @"isDownloading":@NO, @"taskIdentifier":@0 };
+    NSDictionary *fileInfo = @{ @"fileTitle" : videoName, @"downloadSource" :url, @"downloadProgress" :@"0.0", @"isDownloading":@NO, @"taskIdentifier":@0 };
     [[DownloadModel shared] setTask:fileInfo];
 }
 
@@ -91,9 +91,6 @@
         float percent = (float)totalBytesWritten / totalBytesExpectedToWrite;
         NSLog(@"%f", percent);
     }
-    else {
-
-    }
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -114,6 +111,7 @@
 
     NSMutableDictionary *temp = [[NSMutableDictionary alloc] initWithDictionary:fileInfo];
     temp[@"taskIdentifier"] = [NSNumber numberWithInteger:task.taskIdentifier];
+    temp[@"isDownloading"] = @YES;
     fileInfo = temp;
     [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
 

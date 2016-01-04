@@ -17,7 +17,7 @@
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oDC-tV-csa">
                         <rect key="frame" x="18" y="50" width="223" height="2"/>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-jd-JaQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="進度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-jd-JaQ">
                         <rect key="frame" x="249" y="36" width="71" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -31,10 +31,19 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGy-fb-TbT">
                         <rect key="frame" x="249" y="0.0" width="71" height="42"/>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" title="download"/>
+                        <connections>
+                            <action selector="downloadAndStopButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H4L-u4-y0Q"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="playAndStopButton" destination="eGy-fb-TbT" id="Ver-2W-WHJ"/>
+                <outlet property="progressLabel" destination="gEE-jd-JaQ" id="sKa-pD-UEE"/>
+                <outlet property="progressView" destination="oDC-tV-csa" id="Kzb-HE-xx8"/>
+                <outlet property="videoNameLabel" destination="Gju-5k-PpE" id="24K-sh-xKb"/>
+            </connections>
             <point key="canvasLocation" x="370" y="301"/>
         </tableViewCell>
     </objects>

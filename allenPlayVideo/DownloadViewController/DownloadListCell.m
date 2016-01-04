@@ -21,4 +21,9 @@
     return self;
 }
 
+#pragma mark - Button Action
+
+- (IBAction)downloadAndStopButtonAction:(id)sender {
+}
+
 @end
