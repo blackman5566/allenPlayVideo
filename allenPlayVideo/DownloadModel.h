@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void (^DownloadFinishCallBackBlock)();
 
 @interface DownloadModel : NSObject
 
++ (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl completion:(DownloadFinishCallBackBlock)completion;
++ (NSMutableArray *)fileDownloadDataArrays;
 @end

@@ -8,19 +8,18 @@
 
 #import "SearchVideoViewController.h"
 #import "DaiYoutubeParser.h"
-#import "DaiYoutubeParser.h"
 #import "UIView+AnimationExtensions.h"
 #import "AppDelegate.h"
 #import "DownloadListViewController.h"
+#import "DownloadModel.h"
 
-@interface SearchVideoViewController () <NSURLSessionDownloadDelegate>
+@interface SearchVideoViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *downloadButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @property (strong, nonatomic) NSString *youtubeVideoID;
-@property (strong, nonatomic) NSString *videoTitle;
 @property (strong, nonatomic) NSMutableDictionary *listTakeDictionary;
 
 @end
@@ -77,62 +76,14 @@
     [DaiYoutubeParser parse:self.youtubeVideoID screenSize:videoSize videoQuality:DaiYoutubeParserQualityLarge completion: ^(DaiYoutubeParserStatus status, NSString *url, NSString *videoTitle, NSNumber *videoDuration) {
          NSURL *videoUrl = [NSURL URLWithString:url];
          if (status) {
-             self.videoTitle = videoTitle;
-             NSURLSessionDownloadTask *task = [[self backgroundSession] downloadTaskWithRequest:[NSURLRequest requestWithURL:videoUrl]];
-             [task resume];
-
+             [DownloadModel downloadVideo:videoTitle videoUrl:videoUrl completion: ^{
+                  NSLog(@"下載 完成");
+              }];
          }
          else {
              NSLog(@"please check url or network !!");
          }
      }];
-}
-
-#pragma mark - NSURLSessionDownloadDelegate
-
-- (NSURLSession *)backgroundSession {
-    static NSURLSession *session = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.hiiir.allenPlayVideo.BackgroundSession"];
-        session = [NSURLSession sessionWithConfiguration:configuration
-                                                delegate:self
-                                           delegateQueue:nil];
-    });
-    return session;
-}
-
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.backgroundSessionCompletionHandler) {
-        void (^completionHandler)() = appDelegate.backgroundSessionCompletionHandler;
-        appDelegate.backgroundSessionCompletionHandler = nil;
-        completionHandler();
-    }
-}
-
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-    didWriteData:(int64_t)bytesWritten
-    totalBytesWritten:(int64_t)totalBytesWritten
-    totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    if (totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown) {
-        float percent = (float)totalBytesWritten / totalBytesExpectedToWrite;
-        NSLog(@"%f", percent);
-    }
-    else {
-
-    }
-}
-
-- (void)URLSession:(NSURLSession *)session
-    downloadTask:(NSURLSessionDownloadTask *)downloadTask
-    didFinishDownloadingToURL:(NSURL *)location {
-    if (location) {
-        NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-        NSString *fileName = [NSString stringWithFormat:@"%@.m4v", self.videoTitle];
-        NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
-        [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
-    }
 }
 
 #pragma mark - init

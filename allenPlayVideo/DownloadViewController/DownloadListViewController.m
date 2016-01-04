@@ -8,6 +8,8 @@
 
 #import "DownloadListViewController.h"
 #import "DownloadListCell.h"
+#import "DownloadModel.h"
+
 @interface DownloadListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *taskInfoTableView;
@@ -22,11 +24,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 90;
+    return [DownloadModel fileDownloadDataArrays].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,12 +51,23 @@
     [self.taskInfoTableView registerClass:[DownloadListCell class] forCellReuseIdentifier:@"DownloadListCell"];
 }
 
+- (void)setupNaviButton {
+    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"下載進度"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(openListView)];
+    self.navigationItem.leftBarButtonItem = listButton;
+}
+-(void)openListView{
+    [self.taskInfoTableView reloadData];
+}
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupInitValue];
     [self setupTaskInfoTableView];
+    [self setupNaviButton];
 }
 
 @end
