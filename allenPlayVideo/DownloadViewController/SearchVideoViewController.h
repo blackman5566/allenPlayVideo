@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DownloadViewController : UIViewController<UIWebViewDelegate>
+@interface SearchVideoViewController : UIViewController <UIWebViewDelegate>
 
 @end

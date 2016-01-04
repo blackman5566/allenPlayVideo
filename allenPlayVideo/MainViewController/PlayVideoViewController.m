@@ -6,21 +6,22 @@
 //  Copyright © 2015年 allen_hsu. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "PlayVideoViewController.h"
 #import "PlayVideoView.h"
 
-@interface MainViewController ()
+@interface PlayVideoViewController ()
 
 @property(nonatomic, strong) PlayVideoView *playVideo;
 
 @end
 
-@implementation MainViewController
+@implementation PlayVideoViewController
 
 #pragma mark - private method
 
 - (void)setupInitValue {
     self.title = @"影片";
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)setupVideoView {

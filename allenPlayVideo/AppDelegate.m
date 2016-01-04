@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
-#import "DownloadViewController.h"
+#import "PlayVideoViewController.h"
+#import "SearchVideoViewController.h"
+#import "DownloadListViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UITabBarController *tabBar = [UITabBarController new];
     tabBar.viewControllers = [self generatorViewControllers];
+    tabBar.selectedIndex = 2;
     self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
     return YES;
@@ -36,9 +38,9 @@
 #pragma mark * init
 
 - (NSArray *)generatorViewControllers {
-    NSArray *viewControllers = @[[MainViewController new], [DownloadViewController new]];
-    NSArray *selectImages = @[@"play", @"download2"];
-    NSArray *selectedImages = @[@"played", @"download"];
+    NSArray *viewControllers = @[[PlayVideoViewController new], [SearchVideoViewController new], [DownloadListViewController new]];
+    NSArray *selectImages = @[@"playx2", @"searchImagex21", @"Downloadx2"];
+    NSArray *selectedImages = @[@"playedx2", @"searchImagex2", @"DownloadFilledx2"];
     NSMutableArray *naviViewControllers = [NSMutableArray new];
     for (int i = 0; i < viewControllers.count; i++) {
         UINavigationController *naviViewController = [[UINavigationController alloc] initWithRootViewController:viewControllers[i]];

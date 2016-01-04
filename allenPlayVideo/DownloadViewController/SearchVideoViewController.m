@@ -6,13 +6,14 @@
 //  Copyright © 2015年 allen_hsu. All rights reserved.
 //
 
-#import "DownloadViewController.h"
+#import "SearchVideoViewController.h"
 #import "DaiYoutubeParser.h"
 #import "DaiYoutubeParser.h"
 #import "UIView+AnimationExtensions.h"
 #import "AppDelegate.h"
+#import "DownloadListViewController.h"
 
-@interface DownloadViewController () <NSURLSessionDownloadDelegate>
+@interface SearchVideoViewController () <NSURLSessionDownloadDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *downloadButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -24,7 +25,7 @@
 
 @end
 
-@implementation DownloadViewController
+@implementation SearchVideoViewController
 
 #pragma mark - UIButton Action
 
@@ -58,7 +59,7 @@
     // https://www.youtube.com/watch?v=2AUhPKJvslo&index=2&list=RDGV3Bz2_Pw98
     // webView 回的格式為
     // https://m.youtube.com/watch?index=7&v=AUg9OG5i4wQ&list=PLsyOSbh5bs16vubvKePAQ1x3PhKavfBIl
-    
+
     NSURL *url = webView.request.URL;
     NSArray *splitUsingAnd = [url.query componentsSeparatedByString:@"&"];
     for (NSString *keyWord in splitUsingAnd) {
@@ -144,7 +145,7 @@
 }
 
 - (void)setupInitValue {
-    self.title = @"下載";
+    self.title = @"搜尋";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.listTakeDictionary = [NSMutableDictionary new];
 }
