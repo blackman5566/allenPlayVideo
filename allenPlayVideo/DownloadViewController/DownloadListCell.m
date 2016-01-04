@@ -31,12 +31,13 @@
 
 - (IBAction)downloadAndStopButtonAction:(id)sender {
     NSIndexPath *indexPath = [[self dependTableView] indexPathForCell:self];
-    if (self.isDownloading) {
+    if (!self.isDownloading) {
         [self.playAndStopButton setTitle:@"Pause" forState:UIControlStateNormal];
+        [DownloadModel startTask:indexPath.row];
     }
     else {
         [self.playAndStopButton setTitle:@"Downloading" forState:UIControlStateNormal];
-
+        [DownloadModel stopTask:indexPath.row];
     }
     self.isDownloading = !self.isDownloading;
 }

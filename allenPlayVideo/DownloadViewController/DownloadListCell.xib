@@ -31,7 +31,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGy-fb-TbT">
                         <rect key="frame" x="249" y="0.0" width="71" height="42"/>
-                        <state key="normal" title="download"/>
+                        <state key="normal" title="Pause"/>
                         <connections>
                             <action selector="downloadAndStopButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H4L-u4-y0Q"/>
                         </connections>

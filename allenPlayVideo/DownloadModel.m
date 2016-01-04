@@ -7,11 +7,10 @@
 //
 #import "AppDelegate.h"
 #import "DownloadModel.h"
-
+#import "FileDownloadInfo.h"
 @interface DownloadModel () <NSURLSessionDownloadDelegate>
 
 @property (nonatomic, copy) DownloadFinishCallBackBlock completion;
-@property(nonatomic, strong) NSDictionary *fileInfo;
 
 @end
 
@@ -21,6 +20,18 @@
 
 + (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl completion:(DownloadFinishCallBackBlock)completion {
     [[DownloadModel shared] downloadVideo:videoName videoUrl:videoUrl completion:completion];
+}
+
++ (void)stopTask:(NSInteger)index {
+    [[DownloadModel shared] stopTask:index];
+}
+
++ (void)startTask:(NSInteger)index {
+    [[DownloadModel shared] startTask:index];
+}
+
++ (void)cancelTask:(NSInteger)index {
+    [[DownloadModel shared] cancelTask:index];
 }
 
 + (NSMutableArray *)fileDownloadDataArrays {
@@ -40,17 +51,33 @@
 }
 
 #pragma mark - private method
-
-- (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url completion:(DownloadFinishCallBackBlock)completion {
-    self.completion = completion;
-    self.fileInfo = @{ @"fileTitle" : videoName, @"downloadSource" :url, @"downloadProgress" :@"0.0", @"isDownloading":@NO, @"taskIdentifier":@0, @"taskResumeData":@0 };
-    [[DownloadModel shared] setTask:self.fileInfo];
+- (BOOL)isExist:(NSString *)videoName {
+    for (int i = 0; [DownloadModel fileDownloadDataArrays].count; i++) {
+        FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][i];
+        if ([fileInfo.fileTitle isEqualToString:videoName]) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
-- (NSDictionary *)getFileDownloadInfoWithTaskIdentifier:(NSNumber *)identifier {
-    NSDictionary *fileInfo;
+- (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url completion:(DownloadFinishCallBackBlock)completion {
+    if ([self isExist:videoName]) {
+        self.completion = completion;
+        FileDownloadInfo *fileInfo = [[FileDownloadInfo alloc] initWithFileTitle:videoName andDownloadSource:url];
+        [[DownloadModel shared] setTask:fileInfo];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已在下載清單中"message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (FileDownloadInfo *)getFileDownloadInfoWithTaskIdentifier:(unsigned long)identifier {
+    FileDownloadInfo *fileInfo;
     for (int i = 0; i < [DownloadModel fileDownloadDataArrays].count; i++) {
-        if ([DownloadModel fileDownloadDataArrays][i][@"taskIdentifier"] == identifier) {
+        fileInfo = [DownloadModel fileDownloadDataArrays][i];
+        if (fileInfo.taskIdentifier == identifier) {
             fileInfo = [DownloadModel fileDownloadDataArrays][i];
             break;
         }
@@ -59,6 +86,29 @@
 }
 
 #pragma mark * init
+
+- (void)setTask:(FileDownloadInfo *)fileInfo {
+    fileInfo.downloadTask = [[self sessionShare] downloadTaskWithURL:fileInfo.downloadSource];
+    fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
+    fileInfo.isDownloading = YES;
+    [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
+    [fileInfo.downloadTask resume];
+}
+- (void)stopTask:(NSInteger)index {
+    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    [fileInfo.downloadTask suspend];
+    
+}
+- (void)startTask:(NSInteger)index {
+    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    [fileInfo.downloadTask resume];
+    
+}
+- (void)cancelTask:(NSInteger)index {
+    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    [fileInfo.downloadTask cancel];
+    [[DownloadModel fileDownloadDataArrays] removeObjectAtIndex:index];
+}
 
 #pragma mark - NSURLSessionDownloadDelegate
 
@@ -89,34 +139,20 @@
     totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     if (totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown) {
         float percent = (float)totalBytesWritten / totalBytesExpectedToWrite;
-        NSLog(@"%f", percent);
+        NSLog(@"downloadTask = %@ %f", downloadTask, percent);
     }
 }
 
 - (void)URLSession:(NSURLSession *)session
     downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didFinishDownloadingToURL:(NSURL *)location {
-    NSDictionary *fileInfo = [self getFileDownloadInfoWithTaskIdentifier:[NSNumber numberWithInteger:downloadTask.taskIdentifier]];
+    FileDownloadInfo *fileInfo = [self getFileDownloadInfoWithTaskIdentifier:downloadTask.taskIdentifier];
     if (location) {
         NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-        NSString *fileName = [NSString stringWithFormat:@"%@.m4v", fileInfo[@"fileTitle"]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.m4v", fileInfo.fileTitle];
         NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
         self.completion();
     }
 }
-
-- (void)setTask:(NSDictionary *)fileInfo {
-    NSURLSessionDownloadTask *task = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo[@"downloadSource"]]];
-
-    NSMutableDictionary *temp = [[NSMutableDictionary alloc] initWithDictionary:fileInfo];
-    temp[@"taskIdentifier"] = [NSNumber numberWithInteger:task.taskIdentifier];
-    temp[@"isDownloading"] = @YES;
-    temp[@"downloadTask"] = task;
-    self.fileInfo = temp;
-    [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
-
-    [task resume];
-}
-
 @end

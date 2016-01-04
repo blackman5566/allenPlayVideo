@@ -23,6 +23,7 @@
 		9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9790B0081C3A0BAA0027EDFD /* DownloadListViewController.xib */; };
 		9790B00F1C3A0DF60027EDFD /* DownloadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9790B00D1C3A0DF60027EDFD /* DownloadListCell.m */; };
 		9790B0101C3A0DF60027EDFD /* DownloadListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9790B00E1C3A0DF60027EDFD /* DownloadListCell.xib */; };
+		97CA32701C3A8D9F005D6334 /* FileDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */; };
 		E464C5E81C30D7C300E05FC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5E71C30D7C300E05FC4 /* main.m */; };
 		E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */; };
 		E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F21C30D7C300E05FC4 /* Assets.xcassets */; };
@@ -61,6 +62,8 @@
 		9790B00C1C3A0DF60027EDFD /* DownloadListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListCell.h; sourceTree = "<group>"; };
 		9790B00D1C3A0DF60027EDFD /* DownloadListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListCell.m; sourceTree = "<group>"; };
 		9790B00E1C3A0DF60027EDFD /* DownloadListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListCell.xib; sourceTree = "<group>"; };
+		97CA326E1C3A8D9F005D6334 /* FileDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadInfo.h; sourceTree = "<group>"; };
+		97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadInfo.m; sourceTree = "<group>"; };
 		E464C5E31C30D7C300E05FC4 /* allenPlayVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allenPlayVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E464C5E71C30D7C300E05FC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E464C5E91C30D7C300E05FC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 			children = (
 				975B4FD91C3A2C910054CA8A /* DownloadModel.h */,
 				975B4FDA1C3A2C910054CA8A /* DownloadModel.m */,
+				97CA326E1C3A8D9F005D6334 /* FileDownloadInfo.h */,
+				97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */,
 			);
 			name = DownloadModel;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			files = (
 				7E96BCED1C3501FF00C189A9 /* PlayVideoView.m in Sources */,
 				7E96BCDC1C35011A00C189A9 /* DaiYoutubeParserOperation.m in Sources */,
+				97CA32701C3A8D9F005D6334 /* FileDownloadInfo.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				7E96BCC61C35003300C189A9 /* PlayVideoViewController.m in Sources */,
 				7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */,

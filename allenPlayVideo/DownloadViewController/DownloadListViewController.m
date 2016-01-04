@@ -9,6 +9,7 @@
 #import "DownloadListViewController.h"
 #import "DownloadListCell.h"
 #import "DownloadModel.h"
+#import "FileDownloadInfo.h"
 
 @interface DownloadListViewController ()
 
@@ -24,8 +25,21 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.taskInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [DownloadModel cancelTask:indexPath.row];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 #pragma mark - TableView DataSource
@@ -37,9 +51,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"DownloadListCell";
     DownloadListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    cell.videoNameLabel.text = [DownloadModel fileDownloadDataArrays][indexPath.row][@"fileTitle"];
-    cell.progressLabel.text = [DownloadModel fileDownloadDataArrays][indexPath.row][@"downloadProgress"];
-    cell.progressView.progress = [[DownloadModel fileDownloadDataArrays][indexPath.row][@"downloadProgress"] floatValue];
+    FileDownloadInfo *fileInfo  = [DownloadModel fileDownloadDataArrays][indexPath.row];
+    cell.videoNameLabel.text = fileInfo.fileTitle;
+    cell.progressLabel.text = @"0.0";
+    cell.progressView.progress = fileInfo.downloadProgress;
     return cell;
 }
 
@@ -57,7 +72,7 @@
 }
 
 - (void)setupNaviButton {
-    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"下載進度"
+    UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"下載"
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:self
                                                                   action:@selector(openListView)];
@@ -65,7 +80,7 @@
 }
 
 - (void)openListView {
-   
+[self.taskInfoTableView reloadData];
 }
 
 #pragma mark - life cycle
