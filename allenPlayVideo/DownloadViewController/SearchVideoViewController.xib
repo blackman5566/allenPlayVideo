@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVideoViewController">
             <connections>
                 <outlet property="downloadButton" destination="eLq-ZX-e8U" id="7uE-Ia-VXy"/>
                 <outlet property="urlTextField" destination="lBJ-me-yIR" id="XG2-Gw-dqc"/>
