@@ -110,14 +110,28 @@
 }
 - (void)stopTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    [fileInfo.downloadTask cancelByProducingResumeData: ^(NSData *_Nullable resumeData) {
+         fileInfo.taskResumeData = [[NSData alloc] initWithData:resumeData];
+     }];
+    fileInfo.isDownloading = NO;
     [fileInfo.downloadTask suspend];
 
 }
 - (void)startTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
-    [fileInfo.downloadTask resume];
-
+    if (!fileInfo.isDownloading) {
+        if (fileInfo.taskIdentifier == -1) {
+            fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
+        }
+        else {
+            fileInfo.downloadTask = [[self sessionShare] downloadTaskWithResumeData:fileInfo.taskResumeData];
+        }
+        fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
+        [fileInfo.downloadTask resume];
+        fileInfo.isDownloading = YES;
+    }
 }
+
 - (void)cancelTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
     [fileInfo.downloadTask cancel];
