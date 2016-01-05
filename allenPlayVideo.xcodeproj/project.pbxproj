@@ -23,6 +23,14 @@
 		9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9790B0081C3A0BAA0027EDFD /* DownloadListViewController.xib */; };
 		9790B00F1C3A0DF60027EDFD /* DownloadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9790B00D1C3A0DF60027EDFD /* DownloadListCell.m */; };
 		9790B0101C3A0DF60027EDFD /* DownloadListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9790B00E1C3A0DF60027EDFD /* DownloadListCell.xib */; };
+		97B3D94A1C3BE26900BC9947 /* Pokeball-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B3D9491C3BE26900BC9947 /* Pokeball-50.png */; };
+		97B3D95B1C3BF71500BC9947 /* DaiStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D94E1C3BF71500BC9947 /* DaiStorage.m */; };
+		97B3D95C1C3BF71500BC9947 /* DaiStorageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9501C3BF71500BC9947 /* DaiStorageArray.m */; };
+		97B3D95D1C3BF71500BC9947 /* DaiStoragePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9541C3BF71500BC9947 /* DaiStoragePath.m */; };
+		97B3D95E1C3BF71500BC9947 /* DaiStoragePropertiesInObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9561C3BF71500BC9947 /* DaiStoragePropertiesInObject.m */; };
+		97B3D95F1C3BF71500BC9947 /* DaiStorageProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9581C3BF71500BC9947 /* DaiStorageProperty.m */; };
+		97B3D9601C3BF71500BC9947 /* DaiStorageTypeChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D95A1C3BF71500BC9947 /* DaiStorageTypeChecking.m */; };
+		97B3D9641C3BF7C400BC9947 /* VideoListStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9631C3BF7C400BC9947 /* VideoListStorage.m */; };
 		97CA32701C3A8D9F005D6334 /* FileDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */; };
 		E464C5E81C30D7C300E05FC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5E71C30D7C300E05FC4 /* main.m */; };
 		E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */; };
@@ -62,6 +70,22 @@
 		9790B00C1C3A0DF60027EDFD /* DownloadListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListCell.h; sourceTree = "<group>"; };
 		9790B00D1C3A0DF60027EDFD /* DownloadListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListCell.m; sourceTree = "<group>"; };
 		9790B00E1C3A0DF60027EDFD /* DownloadListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListCell.xib; sourceTree = "<group>"; };
+		97B3D9491C3BE26900BC9947 /* Pokeball-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pokeball-50.png"; sourceTree = "<group>"; };
+		97B3D94D1C3BF71500BC9947 /* DaiStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStorage.h; sourceTree = "<group>"; };
+		97B3D94E1C3BF71500BC9947 /* DaiStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStorage.m; sourceTree = "<group>"; };
+		97B3D94F1C3BF71500BC9947 /* DaiStorageArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStorageArray.h; sourceTree = "<group>"; };
+		97B3D9501C3BF71500BC9947 /* DaiStorageArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStorageArray.m; sourceTree = "<group>"; };
+		97B3D9511C3BF71500BC9947 /* DaiStorageDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStorageDefine.h; sourceTree = "<group>"; };
+		97B3D9531C3BF71500BC9947 /* DaiStoragePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStoragePath.h; sourceTree = "<group>"; };
+		97B3D9541C3BF71500BC9947 /* DaiStoragePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStoragePath.m; sourceTree = "<group>"; };
+		97B3D9551C3BF71500BC9947 /* DaiStoragePropertiesInObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStoragePropertiesInObject.h; sourceTree = "<group>"; };
+		97B3D9561C3BF71500BC9947 /* DaiStoragePropertiesInObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStoragePropertiesInObject.m; sourceTree = "<group>"; };
+		97B3D9571C3BF71500BC9947 /* DaiStorageProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStorageProperty.h; sourceTree = "<group>"; };
+		97B3D9581C3BF71500BC9947 /* DaiStorageProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStorageProperty.m; sourceTree = "<group>"; };
+		97B3D9591C3BF71500BC9947 /* DaiStorageTypeChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiStorageTypeChecking.h; sourceTree = "<group>"; };
+		97B3D95A1C3BF71500BC9947 /* DaiStorageTypeChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStorageTypeChecking.m; sourceTree = "<group>"; };
+		97B3D9621C3BF7C400BC9947 /* VideoListStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListStorage.h; sourceTree = "<group>"; };
+		97B3D9631C3BF7C400BC9947 /* VideoListStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListStorage.m; sourceTree = "<group>"; };
 		97CA326E1C3A8D9F005D6334 /* FileDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadInfo.h; sourceTree = "<group>"; };
 		97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadInfo.m; sourceTree = "<group>"; };
 		E464C5E31C30D7C300E05FC4 /* allenPlayVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allenPlayVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +136,7 @@
 		7E96BCCE1C35011A00C189A9 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				97B3D94B1C3BF71500BC9947 /* DaiStorage */,
 				7E96BCCF1C35011A00C189A9 /* DaiYoutubeParser */,
 				7E96BCD81C35011A00C189A9 /* UIView+AnimationExtensions */,
 			);
@@ -171,6 +196,7 @@
 		975B4FD81C3A2C710054CA8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				97B3D9611C3BF76C00BC9947 /* StorageModel */,
 				975B4FDC1C3A2C990054CA8A /* DownloadModel */,
 			);
 			name = Model;
@@ -209,6 +235,51 @@
 			name = DownloadListCell;
 			sourceTree = "<group>";
 		};
+		97B3D94B1C3BF71500BC9947 /* DaiStorage */ = {
+			isa = PBXGroup;
+			children = (
+				97B3D94C1C3BF71500BC9947 /* Core */,
+				97B3D9521C3BF71500BC9947 /* Utility */,
+			);
+			path = DaiStorage;
+			sourceTree = "<group>";
+		};
+		97B3D94C1C3BF71500BC9947 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				97B3D94D1C3BF71500BC9947 /* DaiStorage.h */,
+				97B3D94E1C3BF71500BC9947 /* DaiStorage.m */,
+				97B3D94F1C3BF71500BC9947 /* DaiStorageArray.h */,
+				97B3D9501C3BF71500BC9947 /* DaiStorageArray.m */,
+				97B3D9511C3BF71500BC9947 /* DaiStorageDefine.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		97B3D9521C3BF71500BC9947 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				97B3D9531C3BF71500BC9947 /* DaiStoragePath.h */,
+				97B3D9541C3BF71500BC9947 /* DaiStoragePath.m */,
+				97B3D9551C3BF71500BC9947 /* DaiStoragePropertiesInObject.h */,
+				97B3D9561C3BF71500BC9947 /* DaiStoragePropertiesInObject.m */,
+				97B3D9571C3BF71500BC9947 /* DaiStorageProperty.h */,
+				97B3D9581C3BF71500BC9947 /* DaiStorageProperty.m */,
+				97B3D9591C3BF71500BC9947 /* DaiStorageTypeChecking.h */,
+				97B3D95A1C3BF71500BC9947 /* DaiStorageTypeChecking.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		97B3D9611C3BF76C00BC9947 /* StorageModel */ = {
+			isa = PBXGroup;
+			children = (
+				97B3D9621C3BF7C400BC9947 /* VideoListStorage.h */,
+				97B3D9631C3BF7C400BC9947 /* VideoListStorage.m */,
+			);
+			name = StorageModel;
+			sourceTree = "<group>";
+		};
 		E464C5DA1C30D7C300E05FC4 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +308,7 @@
 				7E96BCBC1C35001200C189A9 /* SearchVideoViewController */,
 				9790B00B1C3A0BB20027EDFD /* DownloadListViewController */,
 				E464C5F21C30D7C300E05FC4 /* Assets.xcassets */,
+				97B3D9491C3BE26900BC9947 /* Pokeball-50.png */,
 				E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */,
 				E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */,
 				E464C5F71C30D7C300E05FC4 /* Info.plist */,
@@ -332,6 +404,7 @@
 				7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */,
 				9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */,
 				7E96BCC71C35003300C189A9 /* PlayVideoViewController.xib in Resources */,
+				97B3D94A1C3BE26900BC9947 /* Pokeball-50.png in Resources */,
 				E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */,
 				E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */,
 			);
@@ -346,13 +419,20 @@
 			files = (
 				7E96BCED1C3501FF00C189A9 /* PlayVideoView.m in Sources */,
 				7E96BCDC1C35011A00C189A9 /* DaiYoutubeParserOperation.m in Sources */,
+				97B3D9601C3BF71500BC9947 /* DaiStorageTypeChecking.m in Sources */,
 				97CA32701C3A8D9F005D6334 /* FileDownloadInfo.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				7E96BCC61C35003300C189A9 /* PlayVideoViewController.m in Sources */,
+				97B3D95F1C3BF71500BC9947 /* DaiStorageProperty.m in Sources */,
+				97B3D9641C3BF7C400BC9947 /* VideoListStorage.m in Sources */,
 				7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */,
+				97B3D95B1C3BF71500BC9947 /* DaiStorage.m in Sources */,
+				97B3D95E1C3BF71500BC9947 /* DaiStoragePropertiesInObject.m in Sources */,
 				9790B00F1C3A0DF60027EDFD /* DownloadListCell.m in Sources */,
+				97B3D95C1C3BF71500BC9947 /* DaiStorageArray.m in Sources */,
 				7E96BCDD1C35011A00C189A9 /* DaiYoutubeParserWebView.m in Sources */,
 				9790B0091C3A0BAA0027EDFD /* DownloadListViewController.m in Sources */,
+				97B3D95D1C3BF71500BC9947 /* DaiStoragePath.m in Sources */,
 				E464C5E81C30D7C300E05FC4 /* main.m in Sources */,
 				7E96BCC01C35001200C189A9 /* SearchVideoViewController.m in Sources */,
 				7E96BCDF1C35011A00C189A9 /* UIView+AnimationExtensions.m in Sources */,

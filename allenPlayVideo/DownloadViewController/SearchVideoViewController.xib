@@ -26,7 +26,7 @@
                     </connections>
                 </webView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.youtube.com/watch?v=1GBeUETCGrs" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBJ-me-yIR">
-                    <rect key="frame" x="0.0" y="65" width="714" height="30"/>
+                    <rect key="frame" x="56" y="65" width="219" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -37,10 +37,12 @@
                         <action selector="loadWebPage:" destination="-1" eventType="touchUpInside" id="Y85-i2-igK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-ZX-e8U">
-                    <rect key="frame" x="8" y="64" width="40" height="30"/>
-                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="D"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-ZX-e8U">
+                    <rect key="frame" x="16" y="66" width="25" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="Pokeball-50">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="downLoadButtonAction:" destination="-1" eventType="touchUpInside" id="jAO-vT-Vrp"/>
                     </connections>
@@ -50,7 +52,10 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="-151" y="265"/>
+            <point key="canvasLocation" x="-344" y="262"/>
         </view>
     </objects>
+    <resources>
+        <image name="Pokeball-50" width="25" height="25"/>
+    </resources>
 </document>

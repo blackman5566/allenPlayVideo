@@ -38,7 +38,7 @@
         self.pauseView.hidden = YES;
     }
     else {
-        [self.playAndStopButton setTitle:@"Downloading" forState:UIControlStateNormal];
+        [self.playAndStopButton setTitle:@"Down" forState:UIControlStateNormal];
         [DownloadModel stopTask:indexPath.row];
         self.pauseView.hidden = NO;
     }

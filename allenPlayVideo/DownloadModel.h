@@ -17,7 +17,7 @@ typedef void (^DownloadProgressUpdateBlock)(NSURLSessionDownloadTask *downloadTa
 + (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl;
 + (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate;
 + (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion;
-+ (NSMutableArray *)fileDownloadDataArrays;
+
 + (void)stopTask:(NSInteger)index;
 + (void)startTask:(NSInteger)index;
 + (void)cancelTask:(NSInteger)index;

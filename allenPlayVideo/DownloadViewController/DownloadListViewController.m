@@ -10,6 +10,7 @@
 #import "DownloadListCell.h"
 #import "DownloadModel.h"
 #import "FileDownloadInfo.h"
+#import "VideoListStorage.h"
 
 @interface DownloadListViewController ()
 
@@ -45,13 +46,13 @@
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [DownloadModel fileDownloadDataArrays].count;
+    return [VideoListStorage shared].fileInfoArrays.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"DownloadListCell";
     DownloadListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    FileDownloadInfo *fileInfo  = [DownloadModel fileDownloadDataArrays][indexPath.row];
+    FileDownloadInfo *fileInfo  = [VideoListStorage shared].fileInfoArrays[indexPath.row];
     cell.videoNameLabel.text = fileInfo.fileTitle;
     cell.progressLabel.text = @"0.0";
     cell.progressView.progress = fileInfo.downloadProgress;
@@ -82,7 +83,7 @@
 - (void)setupBlocks {
     [DownloadModel downloadProgressUpdateBlock: ^(NSURLSessionDownloadTask *downloadTask, CGFloat bytesWritten, CGFloat totalBytesWritten, CGFloat totalBytesExpectedToWrite) {
          FileDownloadInfo *fileInfo;
-         for (fileInfo in [DownloadModel fileDownloadDataArrays]) {
+         for (fileInfo in [VideoListStorage shared].fileInfoArrays) {
              if (fileInfo.taskIdentifier == downloadTask.taskIdentifier) {
                  break;
              }
@@ -90,7 +91,7 @@
          [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
               // Calculate the progress.
               fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
-              NSInteger index = [[DownloadModel fileDownloadDataArrays] indexOfObject:fileInfo];
+              NSInteger index = [[VideoListStorage shared].fileInfoArrays indexOfObject:fileInfo];
               DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
               cell.progressView.progress = fileInfo.downloadProgress;
               cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];

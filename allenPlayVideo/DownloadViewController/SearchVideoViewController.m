@@ -69,6 +69,7 @@
     }
     NSLog(@"self.youtubeVideoID = %@", self.youtubeVideoID);
     NSLog(@"url = %@", url);
+    [self.downloadButton pulseToSize:1.2f duration:0.4f repeat:YES];
 }
 
 #pragma mark - instance private method
@@ -120,7 +121,6 @@
     [self setupInitValue];
     [self setupWebView];
     [self setupNaviButton];
-    [self.downloadButton pulseToSize:1.2f duration:0.4f repeat:YES];
 }
 
 @end

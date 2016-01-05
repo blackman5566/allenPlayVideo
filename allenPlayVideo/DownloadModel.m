@@ -8,6 +8,8 @@
 #import "AppDelegate.h"
 #import "DownloadModel.h"
 #import "FileDownloadInfo.h"
+#import "VideoListStorage.h"
+
 @interface DownloadModel () <NSURLSessionDownloadDelegate>
 
 @property (nonatomic, copy) DownloadFinishCallBackBlock completion;
@@ -26,9 +28,11 @@
 + (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate {
     [[DownloadModel shared] downloadProgressUpdateBlock:downloadProgressUpdate];
 }
+
 + (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion {
     [[DownloadModel shared] downloadFinishCallBackBlockcompletion:completion];
 }
+
 + (void)stopTask:(NSInteger)index {
     [[DownloadModel shared] stopTask:index];
 }
@@ -39,14 +43,6 @@
 
 + (void)cancelTask:(NSInteger)index {
     [[DownloadModel shared] cancelTask:index];
-}
-
-+ (NSMutableArray *)fileDownloadDataArrays {
-    static NSMutableArray *shared = nil;
-    if (!shared) {
-        shared = [[NSMutableArray alloc] init];
-    }
-    return shared;
 }
 
 + (DownloadModel *)shared {
@@ -60,7 +56,7 @@
 #pragma mark - private method
 
 - (BOOL)isExist:(NSString *)videoName {
-    for (FileDownloadInfo *fileInfo in [DownloadModel fileDownloadDataArrays]) {
+    for (FileDownloadInfo *fileInfo in [VideoListStorage shared].fileInfoArrays) {
         if ([fileInfo.fileTitle isEqualToString:videoName]) {
             return 0;
         }
@@ -89,10 +85,10 @@
 
 - (FileDownloadInfo *)getFileDownloadInfoWithTaskIdentifier:(unsigned long)identifier {
     FileDownloadInfo *fileInfo;
-    for (int i = 0; i < [DownloadModel fileDownloadDataArrays].count; i++) {
-        fileInfo = [DownloadModel fileDownloadDataArrays][i];
+    for (int i = 0; i < [VideoListStorage shared].fileInfoArrays.count; i++) {
+        fileInfo = [VideoListStorage shared].fileInfoArrays[i];
         if (fileInfo.taskIdentifier == identifier) {
-            fileInfo = [DownloadModel fileDownloadDataArrays][i];
+            fileInfo = [VideoListStorage shared].fileInfoArrays[i];
             break;
         }
     }
@@ -105,11 +101,13 @@
     fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
     fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
     fileInfo.isDownloading = YES;
-    [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
+    [[VideoListStorage shared].fileInfoArrays addObject:fileInfo];
     [fileInfo.downloadTask resume];
+    [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
+    self.completion();
 }
 - (void)stopTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
     [fileInfo.downloadTask cancelByProducingResumeData: ^(NSData *_Nullable resumeData) {
          fileInfo.taskResumeData = [[NSData alloc] initWithData:resumeData];
      }];
@@ -118,7 +116,7 @@
 
 }
 - (void)startTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
     if (!fileInfo.isDownloading) {
         if (fileInfo.taskIdentifier == -1) {
             fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
@@ -133,9 +131,9 @@
 }
 
 - (void)cancelTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
+    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
     [fileInfo.downloadTask cancel];
-    [[DownloadModel fileDownloadDataArrays] removeObjectAtIndex:index];
+    [[VideoListStorage shared].fileInfoArrays removeObjectAtIndex:index];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -145,6 +143,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.hiiir.allenPlayVideo.BackgroundSession"];
+        configuration.HTTPMaximumConnectionsPerHost = 5;
         session = [NSURLSession sessionWithConfiguration:configuration
                                                 delegate:self
                                            delegateQueue:nil];
@@ -166,7 +165,7 @@
     totalBytesWritten:(int64_t)totalBytesWritten
     totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     if (totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown) {
-        NSLog(@"%f", (float)bytesWritten / totalBytesWritten);
+        NSLog(@"%lu = %f", (unsigned long)downloadTask.taskIdentifier, (float)totalBytesWritten / totalBytesExpectedToWrite);
         self.downloadProgressUpdate(downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     }
 }
@@ -180,7 +179,7 @@
         NSString *fileName = [NSString stringWithFormat:@"%@.m4v", fileInfo.fileTitle];
         NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
-        [[DownloadModel fileDownloadDataArrays] removeObject:fileInfo];
+        [[VideoListStorage shared].fileInfoArrays removeObject:fileInfo];
         self.completion();
     }
 }
