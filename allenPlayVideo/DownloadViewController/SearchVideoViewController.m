@@ -67,6 +67,8 @@
             self.youtubeVideoID = [splitUsingEqual lastObject];
         }
     }
+    NSLog(@"self.youtubeVideoID = %@", self.youtubeVideoID);
+    NSLog(@"url = %@", url);
 }
 
 #pragma mark - instance private method
@@ -76,9 +78,7 @@
     [DaiYoutubeParser parse:self.youtubeVideoID screenSize:videoSize videoQuality:DaiYoutubeParserQualityLarge completion: ^(DaiYoutubeParserStatus status, NSString *url, NSString *videoTitle, NSNumber *videoDuration) {
          NSURL *videoUrl = [NSURL URLWithString:url];
          if (status) {
-             [DownloadModel downloadVideo:videoTitle videoUrl:videoUrl completion: ^{
-                  NSLog(@"下載 完成");
-              }];
+             [DownloadModel downloadVideo:videoTitle videoUrl:videoUrl];
          }
          else {
              NSLog(@"please check url or network !!");

@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^DownloadFinishCallBackBlock)();
+typedef void (^DownloadProgressUpdateBlock)(NSURLSessionDownloadTask *downloadTask,
+                                            CGFloat bytesWritten, CGFloat totalBytesWritten, CGFloat totalBytesExpectedToWrite);
 
 @interface DownloadModel : NSObject
 
-+ (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl completion:(DownloadFinishCallBackBlock)completion;
++ (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl;
++ (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate;
++ (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion;
 + (NSMutableArray *)fileDownloadDataArrays;
 + (void)stopTask:(NSInteger)index;
 + (void)startTask:(NSInteger)index;

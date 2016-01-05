@@ -36,15 +36,28 @@
                             <action selector="downloadAndStopButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H4L-u4-y0Q"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yvd-Yl-YGs">
+                        <rect key="frame" x="0.0" y="35" width="320" height="34"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pause" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z3-xX-Snh">
+                                <rect key="frame" x="131" y="13" width="47" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="pauseView" destination="Yvd-Yl-YGs" id="gV2-Zz-Gar"/>
                 <outlet property="playAndStopButton" destination="eGy-fb-TbT" id="Ver-2W-WHJ"/>
                 <outlet property="progressLabel" destination="gEE-jd-JaQ" id="sKa-pD-UEE"/>
                 <outlet property="progressView" destination="oDC-tV-csa" id="Kzb-HE-xx8"/>
                 <outlet property="videoNameLabel" destination="Gju-5k-PpE" id="24K-sh-xKb"/>
             </connections>
-            <point key="canvasLocation" x="370" y="301"/>
+            <point key="canvasLocation" x="303" y="298"/>
         </tableViewCell>
     </objects>
 </document>

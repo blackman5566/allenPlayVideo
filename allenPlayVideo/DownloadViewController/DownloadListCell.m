@@ -23,6 +23,7 @@
         NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
         self = arrayOfViews[0];
         self.isDownloading = YES;
+        self.pauseView.hidden = YES;
     }
     return self;
 }
@@ -34,10 +35,12 @@
     if (!self.isDownloading) {
         [self.playAndStopButton setTitle:@"Pause" forState:UIControlStateNormal];
         [DownloadModel startTask:indexPath.row];
+        self.pauseView.hidden = YES;
     }
     else {
         [self.playAndStopButton setTitle:@"Downloading" forState:UIControlStateNormal];
         [DownloadModel stopTask:indexPath.row];
+        self.pauseView.hidden = NO;
     }
     self.isDownloading = !self.isDownloading;
 }

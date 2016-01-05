@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *playAndStopButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+@property (weak, nonatomic) IBOutlet UIView *pauseView;
 
 @end

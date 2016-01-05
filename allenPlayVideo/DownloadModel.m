@@ -11,6 +11,7 @@
 @interface DownloadModel () <NSURLSessionDownloadDelegate>
 
 @property (nonatomic, copy) DownloadFinishCallBackBlock completion;
+@property (nonatomic, copy) DownloadProgressUpdateBlock downloadProgressUpdate;
 
 @end
 
@@ -18,10 +19,16 @@
 
 #pragma mark - class method
 
-+ (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl completion:(DownloadFinishCallBackBlock)completion {
-    [[DownloadModel shared] downloadVideo:videoName videoUrl:videoUrl completion:completion];
++ (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)videoUrl {
+    [[DownloadModel shared] downloadVideo:videoName videoUrl:videoUrl];
 }
 
++ (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate {
+    [[DownloadModel shared] downloadProgressUpdateBlock:downloadProgressUpdate];
+}
++ (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion {
+    [[DownloadModel shared] downloadFinishCallBackBlockcompletion:completion];
+}
 + (void)stopTask:(NSInteger)index {
     [[DownloadModel shared] stopTask:index];
 }
@@ -51,9 +58,9 @@
 }
 
 #pragma mark - private method
+
 - (BOOL)isExist:(NSString *)videoName {
-    for (int i = 0; [DownloadModel fileDownloadDataArrays].count; i++) {
-        FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][i];
+    for (FileDownloadInfo *fileInfo in [DownloadModel fileDownloadDataArrays]) {
         if ([fileInfo.fileTitle isEqualToString:videoName]) {
             return 0;
         }
@@ -61,9 +68,8 @@
     return 1;
 }
 
-- (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url completion:(DownloadFinishCallBackBlock)completion {
+- (void)downloadVideo:(NSString *)videoName videoUrl:(NSURL *)url {
     if ([self isExist:videoName]) {
-        self.completion = completion;
         FileDownloadInfo *fileInfo = [[FileDownloadInfo alloc] initWithFileTitle:videoName andDownloadSource:url];
         [[DownloadModel shared] setTask:fileInfo];
     }
@@ -71,6 +77,14 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已在下載清單中"message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion {
+    self.completion = completion;
+}
+
+- (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate {
+    self.downloadProgressUpdate = downloadProgressUpdate;
 }
 
 - (FileDownloadInfo *)getFileDownloadInfoWithTaskIdentifier:(unsigned long)identifier {
@@ -88,7 +102,7 @@
 #pragma mark * init
 
 - (void)setTask:(FileDownloadInfo *)fileInfo {
-    fileInfo.downloadTask = [[self sessionShare] downloadTaskWithURL:fileInfo.downloadSource];
+    fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
     fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
     fileInfo.isDownloading = YES;
     [[DownloadModel fileDownloadDataArrays] addObject:fileInfo];
@@ -97,12 +111,12 @@
 - (void)stopTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
     [fileInfo.downloadTask suspend];
-    
+
 }
 - (void)startTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
     [fileInfo.downloadTask resume];
-    
+
 }
 - (void)cancelTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileDownloadDataArrays][index];
@@ -138,8 +152,8 @@
     totalBytesWritten:(int64_t)totalBytesWritten
     totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     if (totalBytesExpectedToWrite != NSURLSessionTransferSizeUnknown) {
-        float percent = (float)totalBytesWritten / totalBytesExpectedToWrite;
-        NSLog(@"downloadTask = %@ %f", downloadTask, percent);
+        NSLog(@"%f", (float)bytesWritten / totalBytesWritten);
+        self.downloadProgressUpdate(downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
     }
 }
 
@@ -152,6 +166,7 @@
         NSString *fileName = [NSString stringWithFormat:@"%@.m4v", fileInfo.fileTitle];
         NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
+        [[DownloadModel fileDownloadDataArrays] removeObject:fileInfo];
         self.completion();
     }
 }

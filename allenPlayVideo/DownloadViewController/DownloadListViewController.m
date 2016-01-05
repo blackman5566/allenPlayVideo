@@ -33,8 +33,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.taskInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [DownloadModel cancelTask:indexPath.row];
+        [self.taskInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -79,8 +79,32 @@
     self.navigationItem.leftBarButtonItem = listButton;
 }
 
+- (void)setupBlocks {
+    [DownloadModel downloadProgressUpdateBlock: ^(NSURLSessionDownloadTask *downloadTask, CGFloat bytesWritten, CGFloat totalBytesWritten, CGFloat totalBytesExpectedToWrite) {
+         FileDownloadInfo *fileInfo;
+         for (fileInfo in [DownloadModel fileDownloadDataArrays]) {
+             if (fileInfo.taskIdentifier == downloadTask.taskIdentifier) {
+                 break;
+             }
+         }
+         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
+              // Calculate the progress.
+              fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
+              NSInteger index = [[DownloadModel fileDownloadDataArrays] indexOfObject:fileInfo];
+              DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+              cell.progressView.progress = fileInfo.downloadProgress;
+              cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];
+          }];
+     }];
+
+    __weak typeof(self) weakSelf = self;
+    [DownloadModel downloadFinishCallBackBlockcompletion: ^{
+         [weakSelf.taskInfoTableView reloadData];
+     }];
+}
+
 - (void)openListView {
-[self.taskInfoTableView reloadData];
+    [self.taskInfoTableView reloadData];
 }
 
 #pragma mark - life cycle
@@ -90,6 +114,7 @@
     [self setupInitValue];
     [self setupTaskInfoTableView];
     [self setupNaviButton];
+    [self setupBlocks];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
