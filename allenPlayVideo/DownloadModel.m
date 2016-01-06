@@ -45,6 +45,14 @@
     [[DownloadModel shared] cancelTask:index];
 }
 
++ (NSMutableArray *)fileInfoArrays {
+    static NSMutableArray *shared = nil;
+    if (!shared) {
+        shared = [[NSMutableArray alloc] init];
+    }
+    return shared;
+}
+
 + (DownloadModel *)shared {
     static DownloadModel *shared = nil;
     if (!shared) {
@@ -56,7 +64,7 @@
 #pragma mark - private method
 
 - (BOOL)isExist:(NSString *)videoName {
-    for (FileDownloadInfo *fileInfo in [VideoListStorage shared].fileInfoArrays) {
+    for (FileDownloadInfo *fileInfo in [DownloadModel fileInfoArrays]) {
         if ([fileInfo.fileTitle isEqualToString:videoName]) {
             return 0;
         }
@@ -70,6 +78,7 @@
         [[DownloadModel shared] setTask:fileInfo];
     }
     else {
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"已在下載清單中"message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
@@ -85,10 +94,10 @@
 
 - (FileDownloadInfo *)getFileDownloadInfoWithTaskIdentifier:(unsigned long)identifier {
     FileDownloadInfo *fileInfo;
-    for (int i = 0; i < [VideoListStorage shared].fileInfoArrays.count; i++) {
-        fileInfo = [VideoListStorage shared].fileInfoArrays[i];
+    for (int i = 0; i < [DownloadModel fileInfoArrays].count; i++) {
+        fileInfo = [DownloadModel fileInfoArrays][i];
         if (fileInfo.taskIdentifier == identifier) {
-            fileInfo = [VideoListStorage shared].fileInfoArrays[i];
+            fileInfo = [DownloadModel fileInfoArrays][i];
             break;
         }
     }
@@ -101,13 +110,13 @@
     fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
     fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
     fileInfo.isDownloading = YES;
-    [[VideoListStorage shared].fileInfoArrays addObject:fileInfo];
+    [[DownloadModel fileInfoArrays] addObject:fileInfo];
     [fileInfo.downloadTask resume];
     [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
     self.completion();
 }
 - (void)stopTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
+    FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     [fileInfo.downloadTask cancelByProducingResumeData: ^(NSData *_Nullable resumeData) {
          fileInfo.taskResumeData = [[NSData alloc] initWithData:resumeData];
      }];
@@ -116,7 +125,7 @@
 
 }
 - (void)startTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
+    FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     if (!fileInfo.isDownloading) {
         if (fileInfo.taskIdentifier == -1) {
             fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
@@ -131,9 +140,9 @@
 }
 
 - (void)cancelTask:(NSInteger)index {
-    FileDownloadInfo *fileInfo = [VideoListStorage shared].fileInfoArrays[index];
+    FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     [fileInfo.downloadTask cancel];
-    [[VideoListStorage shared].fileInfoArrays removeObjectAtIndex:index];
+    [[DownloadModel fileInfoArrays] removeObjectAtIndex:index];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -179,7 +188,9 @@
         NSString *fileName = [NSString stringWithFormat:@"%@.m4v", fileInfo.fileTitle];
         NSURL *tempURL = [documentsURL URLByAppendingPathComponent:fileName];
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:tempURL error:nil];
-        [[VideoListStorage shared].fileInfoArrays removeObject:fileInfo];
+        [[DownloadModel fileInfoArrays] removeObject:fileInfo];
+        [[VideoListStorage shared].videoListInfoArrays addObject:fileInfo.fileTitle];
+        [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
         self.completion();
     }
 }

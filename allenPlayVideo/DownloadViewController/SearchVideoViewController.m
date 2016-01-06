@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @property (strong, nonatomic) NSString *youtubeVideoID;
-@property (strong, nonatomic) NSMutableDictionary *listTakeDictionary;
 
 @end
 
@@ -99,7 +98,6 @@
 - (void)setupInitValue {
     self.title = @"搜尋";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.listTakeDictionary = [NSMutableDictionary new];
 }
 
 - (void)setupNaviButton {

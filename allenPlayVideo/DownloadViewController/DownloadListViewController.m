@@ -46,13 +46,13 @@
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [VideoListStorage shared].fileInfoArrays.count;
+    return [DownloadModel fileInfoArrays].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"DownloadListCell";
     DownloadListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    FileDownloadInfo *fileInfo  = [VideoListStorage shared].fileInfoArrays[indexPath.row];
+    FileDownloadInfo *fileInfo  = [DownloadModel fileInfoArrays][indexPath.row];
     cell.videoNameLabel.text = fileInfo.fileTitle;
     cell.progressLabel.text = @"0.0";
     cell.progressView.progress = fileInfo.downloadProgress;
@@ -83,7 +83,7 @@
 - (void)setupBlocks {
     [DownloadModel downloadProgressUpdateBlock: ^(NSURLSessionDownloadTask *downloadTask, CGFloat bytesWritten, CGFloat totalBytesWritten, CGFloat totalBytesExpectedToWrite) {
          FileDownloadInfo *fileInfo;
-         for (fileInfo in [VideoListStorage shared].fileInfoArrays) {
+         for (fileInfo in [DownloadModel fileInfoArrays]) {
              if (fileInfo.taskIdentifier == downloadTask.taskIdentifier) {
                  break;
              }
@@ -91,7 +91,7 @@
          [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
               // Calculate the progress.
               fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
-              NSInteger index = [[VideoListStorage shared].fileInfoArrays indexOfObject:fileInfo];
+              NSInteger index = [[DownloadModel fileInfoArrays] indexOfObject:fileInfo];
               DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
               cell.progressView.progress = fileInfo.downloadProgress;
               cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];

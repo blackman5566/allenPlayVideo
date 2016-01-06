@@ -67,15 +67,7 @@ typedef enum {
 
 - (IBAction)playMusicButtonAction:(id)sender {
     // 播放功能
-    if (self.isPlayingVideos) {
-        [self.playAndPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
-        [self playVideo];
-    }
-    else {
-        [self.playAndPauseButton setTitle:@"Play" forState:UIControlStateNormal];
-        [self pauseVideo];
-    }
-    self.isPlayingVideos = !self.isPlayingVideos;
+    [self playVideoAndPause];
 }
 
 - (IBAction)fullScreenButtonAction:(id)sender {
@@ -102,6 +94,8 @@ typedef enum {
     NSInteger nextIndex = (self.playIndex + self.dataSoruce.count);
     self.playIndex = nextIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
+    self.isPlayingVideos = YES;
+    [self playVideoAndPause];
 }
 
 - (void)periousVideoButtonAction {
@@ -109,14 +103,21 @@ typedef enum {
     NSInteger preIndex = (self.playIndex + self.dataSoruce.count);
     self.playIndex = preIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
+    self.isPlayingVideos = YES;
+    [self playVideoAndPause];
 }
 
-- (void)playVideo {
-    [self.player play];
-}
+- (void)playVideoAndPause {
+    if (self.isPlayingVideos) {
+        [self.playAndPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        [self.player play];
+    }
+    else {
+        [self.playAndPauseButton setTitle:@"Play" forState:UIControlStateNormal];
+        [self.player pause];
 
-- (void)pauseVideo {
-    [self.player pause];
+    }
+    self.isPlayingVideos = !self.isPlayingVideos;
 }
 
 #pragma mark * Slider
@@ -154,9 +155,6 @@ typedef enum {
         self.isHide = NO;
         [self playVideoConfigure:self.playIndex];
     }
-    else {
-        NSLog(@"no data");
-    }
 }
 
 - (void)playVideoConfigure:(NSInteger)videoindex {
@@ -172,7 +170,6 @@ typedef enum {
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [self.playVideoView.layer addSublayer:self.playerLayer];
-    [self.player play];
     [self addObservers];
 }
 

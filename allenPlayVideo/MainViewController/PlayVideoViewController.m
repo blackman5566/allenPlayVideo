@@ -8,6 +8,7 @@
 
 #import "PlayVideoViewController.h"
 #import "PlayVideoView.h"
+#import "VideoListStorage.h"
 
 @interface PlayVideoViewController ()
 
@@ -25,10 +26,24 @@
 }
 
 - (void)setupVideoView {
-    self.playVideo = [PlayVideoView new];
-    [self.view addSubview:self.playVideo];
-    NSArray *array = @[@"like", @"Movie", @"我能給的",@"蘇打綠 sodagreen -【追追追】Official Music Video"];
-    [self.playVideo initVideoData:array];
+    NSMutableArray *videoFile = [VideoListStorage shared].videoListInfoArrays;
+    if (videoFile.count) {
+        self.playVideo = [PlayVideoView new];
+        [self.view addSubview:self.playVideo];
+        [self.playVideo initVideoData:[VideoListStorage shared].videoListInfoArrays];
+    }
+    else {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"沒有影片"
+                                                     message:@"趕快去下載"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler: ^(UIAlertAction *action){
+                                       self.navigationController.tabBarController.selectedIndex = 1;
+                                   }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+
+    }
 }
 
 #pragma mark - life cycle
@@ -39,5 +54,8 @@
     [self setupVideoView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self setupVideoView];
+}
 
 @end

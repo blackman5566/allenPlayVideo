@@ -7,12 +7,11 @@
 //
 
 #import "DaiStorage.h"
-DaiStorageArrayConverter(fileInfo)
-DaiStorageArrayConverter(videoList)
+
+DaiStorageArrayConverter(NSString)
 
 @interface VideoListStorage : DaiStorage
 
-@property (nonatomic, strong) fileInfoArray *fileInfoArrays;
-@property (nonatomic, strong) videoListArray *videoListInfoArrays;
+@property (nonatomic, strong) NSStringArray *videoListInfoArrays;
 
 @end
