@@ -27,7 +27,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *videoSlider;
 
-@property (strong, nonatomic) NSArray *dataSoruce;
+@property (strong, nonatomic) NSMutableArray *dataSoruce;
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerLayer *playerLayer;
 
@@ -37,6 +37,7 @@ typedef enum {
 @property (assign, nonatomic) BOOL isHide;
 @property (assign, nonatomic) NSInteger playIndex;
 
+@property(copy, nonatomic) RemoveCallBackBlock removeCallBackBlock;
 @end
 
 @implementation PlayVideoView
@@ -120,6 +121,26 @@ typedef enum {
     self.isPlayingVideos = !self.isPlayingVideos;
 }
 
+- (void)didVideoSelect:(NSUInteger)index {
+    [self playVideoConfigure:index];
+    self.isPlayingVideos = YES;
+    [self playVideoAndPause];
+}
+- (void)removeVideo:(NSString *)fileName completion:(RemoveCallBackBlock)completion {
+    NSString *path = [self playVideo:fileName pathType:PathTypeFromDefault];
+    NSLog(@"124214");
+    if (path) {
+      NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtPath:path error:NULL];
+        UIAlertView *removeSuccessFulAlert = [[UIAlertView alloc] initWithTitle:@"Congratulation:" message:@"Successfully removed" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+        [removeSuccessFulAlert show];
+        [self.dataSoruce removeObject:fileName];
+        completion(self.dataSoruce);
+    }
+    else {
+        NSLog(@"Could not delete file ");
+    }
+}
 #pragma mark * Slider
 
 - (IBAction)videoSliderTouchDown:(id)sender {

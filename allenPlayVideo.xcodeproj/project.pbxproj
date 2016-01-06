@@ -31,6 +31,8 @@
 		97B3D95F1C3BF71500BC9947 /* DaiStorageProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9581C3BF71500BC9947 /* DaiStorageProperty.m */; };
 		97B3D9601C3BF71500BC9947 /* DaiStorageTypeChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D95A1C3BF71500BC9947 /* DaiStorageTypeChecking.m */; };
 		97B3D9641C3BF7C400BC9947 /* VideoListStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D9631C3BF7C400BC9947 /* VideoListStorage.m */; };
+		97B3D96C1C3D06FE00BC9947 /* PlayVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B3D96A1C3D06FE00BC9947 /* PlayVideoCell.m */; };
+		97B3D96D1C3D06FE00BC9947 /* PlayVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B3D96B1C3D06FE00BC9947 /* PlayVideoCell.xib */; };
 		97CA32701C3A8D9F005D6334 /* FileDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */; };
 		E464C5E81C30D7C300E05FC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5E71C30D7C300E05FC4 /* main.m */; };
 		E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */; };
@@ -86,6 +88,9 @@
 		97B3D95A1C3BF71500BC9947 /* DaiStorageTypeChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiStorageTypeChecking.m; sourceTree = "<group>"; };
 		97B3D9621C3BF7C400BC9947 /* VideoListStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListStorage.h; sourceTree = "<group>"; };
 		97B3D9631C3BF7C400BC9947 /* VideoListStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListStorage.m; sourceTree = "<group>"; };
+		97B3D9691C3D06FE00BC9947 /* PlayVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoCell.h; sourceTree = "<group>"; };
+		97B3D96A1C3D06FE00BC9947 /* PlayVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoCell.m; sourceTree = "<group>"; };
+		97B3D96B1C3D06FE00BC9947 /* PlayVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayVideoCell.xib; sourceTree = "<group>"; };
 		97CA326E1C3A8D9F005D6334 /* FileDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloadInfo.h; sourceTree = "<group>"; };
 		97CA326F1C3A8D9F005D6334 /* FileDownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloadInfo.m; sourceTree = "<group>"; };
 		E464C5E31C30D7C300E05FC4 /* allenPlayVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = allenPlayVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,13 +128,15 @@
 			path = DownloadViewController;
 			sourceTree = "<group>";
 		};
-		7E96BCC21C35003300C189A9 /* MainViewController */ = {
+		7E96BCC21C35003300C189A9 /* PlayVideoViewController */ = {
 			isa = PBXGroup;
 			children = (
 				7E96BCC31C35003300C189A9 /* PlayVideoViewController.h */,
 				7E96BCC41C35003300C189A9 /* PlayVideoViewController.m */,
 				7E96BCC51C35003300C189A9 /* PlayVideoViewController.xib */,
+				97B3D9681C3D06D300BC9947 /* PlayVideoCell */,
 			);
+			name = PlayVideoViewController;
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
@@ -280,6 +287,16 @@
 			name = StorageModel;
 			sourceTree = "<group>";
 		};
+		97B3D9681C3D06D300BC9947 /* PlayVideoCell */ = {
+			isa = PBXGroup;
+			children = (
+				97B3D9691C3D06FE00BC9947 /* PlayVideoCell.h */,
+				97B3D96A1C3D06FE00BC9947 /* PlayVideoCell.m */,
+				97B3D96B1C3D06FE00BC9947 /* PlayVideoCell.xib */,
+			);
+			name = PlayVideoCell;
+			sourceTree = "<group>";
+		};
 		E464C5DA1C30D7C300E05FC4 = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +321,7 @@
 				7E96BCE71C3501FF00C189A9 /* Commom */,
 				E464C5E91C30D7C300E05FC4 /* AppDelegate.h */,
 				E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */,
-				7E96BCC21C35003300C189A9 /* MainViewController */,
+				7E96BCC21C35003300C189A9 /* PlayVideoViewController */,
 				7E96BCBC1C35001200C189A9 /* SearchVideoViewController */,
 				9790B00B1C3A0BB20027EDFD /* DownloadListViewController */,
 				E464C5F21C30D7C300E05FC4 /* Assets.xcassets */,
@@ -401,6 +418,7 @@
 				E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */,
 				E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
+				97B3D96D1C3D06FE00BC9947 /* PlayVideoCell.xib in Resources */,
 				7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */,
 				9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */,
 				7E96BCC71C35003300C189A9 /* PlayVideoViewController.xib in Resources */,
@@ -426,6 +444,7 @@
 				97B3D95F1C3BF71500BC9947 /* DaiStorageProperty.m in Sources */,
 				97B3D9641C3BF7C400BC9947 /* VideoListStorage.m in Sources */,
 				7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */,
+				97B3D96C1C3D06FE00BC9947 /* PlayVideoCell.m in Sources */,
 				97B3D95B1C3BF71500BC9947 /* DaiStorage.m in Sources */,
 				97B3D95E1C3BF71500BC9947 /* DaiStoragePropertiesInObject.m in Sources */,
 				9790B00F1C3A0DF60027EDFD /* DownloadListCell.m in Sources */,

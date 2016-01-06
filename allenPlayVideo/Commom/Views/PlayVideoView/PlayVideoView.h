@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+typedef void (^RemoveCallBackBlock)(NSMutableArray *array);
+
 @interface PlayVideoView : UIView
 
 - (void)initVideoData:(NSArray *)videoData;
-- (UIImage *)videoImage:(NSInteger)keyValue;
-
+- (UIImage *)videoImage:(NSInteger)videoindex;
+- (void)didVideoSelect:(NSUInteger)index;
+- (void)removeVideo:(NSString *)fileName completion:(RemoveCallBackBlock)completion;
 @end
