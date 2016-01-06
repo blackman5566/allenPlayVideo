@@ -37,7 +37,8 @@ typedef enum {
 @property (assign, nonatomic) BOOL isHide;
 @property (assign, nonatomic) NSInteger playIndex;
 
-@property(copy, nonatomic) RemoveCallBackBlock removeCallBackBlock;
+@property(copy, nonatomic) RemoveVideoBackBlock removeVideoBackBlock;
+
 @end
 
 @implementation PlayVideoView
@@ -126,16 +127,15 @@ typedef enum {
     self.isPlayingVideos = YES;
     [self playVideoAndPause];
 }
-- (void)removeVideo:(NSString *)fileName completion:(RemoveCallBackBlock)completion {
+- (void)removeVideo:(NSString *)fileName callBack:(RemoveVideoBackBlock)completion {
     NSString *path = [self playVideo:fileName pathType:PathTypeFromDefault];
-    NSLog(@"124214");
     if (path) {
-      NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager removeItemAtPath:path error:NULL];
         UIAlertView *removeSuccessFulAlert = [[UIAlertView alloc] initWithTitle:@"Congratulation:" message:@"Successfully removed" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
         [removeSuccessFulAlert show];
         [self.dataSoruce removeObject:fileName];
-        completion(self.dataSoruce);
+        completion();
     }
     else {
         NSLog(@"Could not delete file ");
@@ -167,31 +167,41 @@ typedef enum {
     return self;
 }
 
-- (void)initVideoData:(NSArray *)videoData {
-    if (videoData.count) {
-        self.isChangeRate = NO;
-        self.isPlayingVideos = YES;
-        self.dataSoruce = videoData;
-        self.playIndex = 0;
-        self.isHide = NO;
-        [self playVideoConfigure:self.playIndex];
-    }
+- (void)initVideoData:(NSMutableArray *)videoData {
+    self.isChangeRate = NO;
+    self.isPlayingVideos = YES;
+    self.dataSoruce = videoData;
+    self.playIndex = 0;
+    self.isHide = NO;
+    [self playVideoConfigure:self.playIndex];
 }
 
 - (void)playVideoConfigure:(NSInteger)videoindex {
     [self removeAllObserver];
     // 取得檔案路徑
-    NSString *path = [self playVideo:self.dataSoruce[videoindex] pathType:PathTypeFromDefault];
-    NSURL *fileURL = [NSURL fileURLWithPath:path];
-    // 設定播放項目
-    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
-    self.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
-    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    self.playerLayer.frame = self.bounds;
-    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-    [self.playVideoView.layer addSublayer:self.playerLayer];
-    [self addObservers];
+    if (self.dataSoruce.count) {
+        NSString *path = [self playVideo:self.dataSoruce[videoindex] pathType:PathTypeFromDefault];
+        NSURL *fileURL = [NSURL fileURLWithPath:path];
+        // 設定播放項目
+        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
+        self.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+        self.playerLayer.frame = self.bounds;
+        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+        [self.playVideoView.layer addSublayer:self.playerLayer];
+        [self addObservers];
+    }
+    else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"沒有影片" message:@"趕快去下載" preferredStyle:UIAlertControllerStyleAlert];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        UIViewController *currentViewController = window.rootViewController;
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler: ^(UIAlertAction *action){
+                                       currentViewController.navigationController.tabBarController.selectedIndex = 1;
+                                   }];
+        [alert addAction:okAction];
+        [currentViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 #pragma mark * misc

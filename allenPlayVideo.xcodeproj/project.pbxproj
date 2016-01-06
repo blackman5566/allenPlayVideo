@@ -38,9 +38,6 @@
 		E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E464C5EA1C30D7C300E05FC4 /* AppDelegate.m */; };
 		E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F21C30D7C300E05FC4 /* Assets.xcassets */; };
 		E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E464C5F41C30D7C300E05FC4 /* LaunchScreen.storyboard */; };
-		E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61B1C312C2F00E05FC4 /* like.m4v */; };
-		E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61C1C312C2F00E05FC4 /* Movie.m4v */; };
-		E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */; };
 		E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */; };
 /* End PBXBuildFile section */
 
@@ -100,9 +97,6 @@
 		E464C5F21C30D7C300E05FC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E464C5F51C30D7C300E05FC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E464C5F71C30D7C300E05FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E464C61B1C312C2F00E05FC4 /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
-		E464C61C1C312C2F00E05FC4 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
-		E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我能給的.m4v"; sourceTree = "<group>"; };
 		E464C6281C31793E00E05FC4 /* Default-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Default-568h@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,20 +331,9 @@
 		E464C5E61C30D7C300E05FC4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E464C61A1C312C2F00E05FC4 /* Videos */,
 				E464C5E71C30D7C300E05FC4 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E464C61A1C312C2F00E05FC4 /* Videos */ = {
-			isa = PBXGroup;
-			children = (
-				E464C61B1C312C2F00E05FC4 /* like.m4v */,
-				E464C61C1C312C2F00E05FC4 /* Movie.m4v */,
-				E464C61D1C312C2F00E05FC4 /* 我能給的.m4v */,
-			);
-			path = Videos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,7 +398,6 @@
 				9790B0101C3A0DF60027EDFD /* DownloadListCell.xib in Resources */,
 				7E96BCC11C35001200C189A9 /* SearchVideoViewController.xib in Resources */,
 				E464C5F61C30D7C300E05FC4 /* LaunchScreen.storyboard in Resources */,
-				E464C61F1C312C2F00E05FC4 /* Movie.m4v in Resources */,
 				E464C6291C31793E00E05FC4 /* Default-568h@2x.jpg in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
 				97B3D96D1C3D06FE00BC9947 /* PlayVideoCell.xib in Resources */,
@@ -423,8 +405,6 @@
 				9790B00A1C3A0BAA0027EDFD /* DownloadListViewController.xib in Resources */,
 				7E96BCC71C35003300C189A9 /* PlayVideoViewController.xib in Resources */,
 				97B3D94A1C3BE26900BC9947 /* Pokeball-50.png in Resources */,
-				E464C6201C312C2F00E05FC4 /* 我能給的.m4v in Resources */,
-				E464C61E1C312C2F00E05FC4 /* like.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

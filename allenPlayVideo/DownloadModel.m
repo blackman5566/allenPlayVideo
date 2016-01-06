@@ -83,15 +83,17 @@
         [alert show];
     }
 }
-
+// downloadFinishCallBackBlockcompletion
 - (void)downloadFinishCallBackBlockcompletion:(DownloadFinishCallBackBlock)completion {
     self.completion = completion;
 }
 
+// downloadProgressUpdateBlock
 - (void)downloadProgressUpdateBlock:(DownloadProgressUpdateBlock)downloadProgressUpdate {
     self.downloadProgressUpdate = downloadProgressUpdate;
 }
 
+// 找尋特定的任務
 - (FileDownloadInfo *)getFileDownloadInfoWithTaskIdentifier:(unsigned long)identifier {
     FileDownloadInfo *fileInfo;
     for (int i = 0; i < [DownloadModel fileInfoArrays].count; i++) {
@@ -106,6 +108,7 @@
 
 #pragma mark * init
 
+// 任務初始設定
 - (void)setTask:(FileDownloadInfo *)fileInfo {
     fileInfo.downloadTask = [[self sessionShare] downloadTaskWithRequest:[NSURLRequest requestWithURL:fileInfo.downloadSource]];
     fileInfo.taskIdentifier = fileInfo.downloadTask.taskIdentifier;
@@ -115,6 +118,8 @@
     [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
     self.completion();
 }
+
+// 暫停任務
 - (void)stopTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     [fileInfo.downloadTask cancelByProducingResumeData: ^(NSData *_Nullable resumeData) {
@@ -124,6 +129,8 @@
     [fileInfo.downloadTask suspend];
 
 }
+
+// 開始任務
 - (void)startTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     if (!fileInfo.isDownloading) {
@@ -139,6 +146,7 @@
     }
 }
 
+// 取消任務
 - (void)cancelTask:(NSInteger)index {
     FileDownloadInfo *fileInfo = [DownloadModel fileInfoArrays][index];
     [fileInfo.downloadTask cancel];
@@ -147,6 +155,7 @@
 
 #pragma mark - NSURLSessionDownloadDelegate
 
+// 初始化 NSURLSession
 - (NSURLSession *)sessionShare {
     static NSURLSession *session = nil;
     static dispatch_once_t onceToken;
@@ -160,6 +169,7 @@
     return session;
 }
 
+// 背景下載 deleage
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate.backgroundSessionCompletionHandler) {
@@ -169,6 +179,7 @@
     }
 }
 
+//會自動回傳目前下載進度。
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didWriteData:(int64_t)bytesWritten
     totalBytesWritten:(int64_t)totalBytesWritten
@@ -179,6 +190,7 @@
     }
 }
 
+// 當下載完，回自動將檔案移至 documents 資料夾裡。
 - (void)URLSession:(NSURLSession *)session
     downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didFinishDownloadingToURL:(NSURL *)location {

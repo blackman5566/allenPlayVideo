@@ -36,10 +36,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *filetitle = self.videoFile[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        __weak typeof(self) weakSelf = self;
-        [self.playVideo removeVideo:filetitle completion: ^(NSMutableArray *array) {
-            weakSelf.videoFile = array;
-         }];
+        [self.playVideo removeVideo:filetitle callBack:^{
+            [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
+        }];
         [self.videoInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
@@ -72,19 +71,9 @@
 
 - (void)setupVideoView {
     self.videoFile = [VideoListStorage shared].videoListInfoArrays;
-    // if (self.videoFile.count) {
     self.playVideo = [PlayVideoView new];
     [self.view addSubview:self.playVideo];
     [self.playVideo initVideoData:[VideoListStorage shared].videoListInfoArrays];
-//    }
-//    else {
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"沒有影片" message:@"趕快去下載" preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler: ^(UIAlertAction *action){
-//                                       self.navigationController.tabBarController.selectedIndex = 1;
-//                                   }];
-//        [alert addAction:okAction];
-//        [self presentViewController:alert animated:YES completion:nil];
-//    }
 }
 
 - (void)setupVideoInfoTableView {
