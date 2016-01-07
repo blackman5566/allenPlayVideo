@@ -16,5 +16,5 @@ typedef void (^RemoveVideoBackBlock)();
 - (void)initVideoData:(NSMutableArray *)videoData;
 - (UIImage *)videoImage:(NSInteger)videoindex;
 - (void)didVideoSelect:(NSUInteger)index;
-- (void)removeVideo:(NSString *)fileName callBack:(RemoveVideoBackBlock)completion;
+- (void)removeVideo:(NSInteger )index callBack:(RemoveVideoBackBlock)completion;
 @end

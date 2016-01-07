@@ -127,20 +127,26 @@ typedef enum {
     self.isPlayingVideos = YES;
     [self playVideoAndPause];
 }
-- (void)removeVideo:(NSString *)fileName callBack:(RemoveVideoBackBlock)completion {
-    NSString *path = [self playVideo:fileName pathType:PathTypeFromDefault];
+- (void)removeVideo:(NSInteger)index callBack:(RemoveVideoBackBlock)completion {
+    NSString *filetitle = self.dataSoruce[index];
+    NSString *path = [self playVideo:filetitle pathType:PathTypeFromDefault];
     if (path) {
+        if (self.playIndex == [self.dataSoruce indexOfObject:filetitle]) {
+            [self.playerLayer removeFromSuperlayer];
+            [self.player pause];
+        }
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager removeItemAtPath:path error:NULL];
         UIAlertView *removeSuccessFulAlert = [[UIAlertView alloc] initWithTitle:@"Congratulation:" message:@"Successfully removed" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
         [removeSuccessFulAlert show];
-        [self.dataSoruce removeObject:fileName];
+        [self.dataSoruce removeObject:filetitle];
         completion();
     }
     else {
         NSLog(@"Could not delete file ");
     }
 }
+
 #pragma mark * Slider
 
 - (IBAction)videoSliderTouchDown:(id)sender {
@@ -149,8 +155,9 @@ typedef enum {
 
 - (IBAction)videoSliderUpInside:(id)sender {
     CMTime dragedCMTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
+    __weak typeof(self) weakSelf = self;
     [self.player seekToTime:dragedCMTime completionHandler: ^(BOOL finished) {
-         [self.player play];
+         [weakSelf playVideoAndPause];
      }];
     self.isSliderMoving = !self.isSliderMoving;
 }

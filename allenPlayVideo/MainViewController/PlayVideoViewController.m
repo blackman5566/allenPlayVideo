@@ -34,9 +34,8 @@
     [self.playVideo didVideoSelect:indexPath.row];
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *filetitle = self.videoFile[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.playVideo removeVideo:filetitle callBack:^{
+        [self.playVideo removeVideo:indexPath.row callBack:^{
             [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
         }];
         [self.videoInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
