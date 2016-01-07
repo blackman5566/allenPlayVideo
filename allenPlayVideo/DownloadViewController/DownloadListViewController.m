@@ -88,15 +88,14 @@
                  break;
              }
          }
-         [[NSOperationQueue mainQueue] addOperationWithBlock: ^{
-              // Calculate the progress.
-              fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
-              NSInteger index = [[DownloadModel fileInfoArrays] indexOfObject:fileInfo];
-              DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-              cell.progressView.progress = fileInfo.downloadProgress;
-              cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];
-          }];
-     }];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
+            NSInteger index = [[DownloadModel fileInfoArrays] indexOfObject:fileInfo];
+            DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+            cell.progressView.progress = fileInfo.downloadProgress;
+            cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];
+        });
+    }];
 
     __weak typeof(self) weakSelf = self;
     [DownloadModel downloadFinishCallBackBlockcompletion: ^{

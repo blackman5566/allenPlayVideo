@@ -298,7 +298,6 @@ typedef enum {
             return videoName;
         }
     }
-
     if (![self isFindMP3:path]) {
         path = [NSString new];
     }
