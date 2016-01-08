@@ -26,6 +26,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *videoSlider;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadActivityView;
 
 @property (strong, nonatomic) NSMutableArray *dataSoruce;
 @property (strong, nonatomic) AVPlayer *player;
@@ -34,7 +35,7 @@ typedef enum {
 @property (assign, nonatomic) BOOL isChangeRate;
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) BOOL isSliderMoving;
-@property (assign, nonatomic) BOOL isHide;
+@property (assign, nonatomic) BOOL isTapScreen;
 @property (assign, nonatomic) NSInteger playIndex;
 
 @property(copy, nonatomic) RemoveVideoBackBlock removeVideoBackBlock;
@@ -46,13 +47,8 @@ typedef enum {
 #pragma mark - GestureRecognizer
 
 - (IBAction)tapGestureRecognizerAction:(id)sender {
-    if (self.isHide) {
-        [self controlButtonViewShow];
-    }
-    else {
-        [self controlButtonViewHide];
-    }
-    self.isHide = !self.isHide;
+    self.isTapScreen = YES;
+    [self controlButtonViewShowAndHide];
 }
 
 #pragma mark - IBAction Action
@@ -122,7 +118,23 @@ typedef enum {
     self.isPlayingVideos = !self.isPlayingVideos;
 
 }
-
+- (void)controlButtonViewShowAndHide {
+    if (self.isTapScreen) {
+        if (self.controlButtonView.hidden) {
+            [self controlButtonViewShow];
+            [self performSelector:@selector(controlButtonViewHide) withObject:nil afterDelay:5.0f];
+        }
+        else {
+            [self controlButtonViewHide];
+        }
+    }
+    else {
+        if (!self.controlButtonView.hidden) {
+            [self performSelector:@selector(controlButtonViewHide) withObject:nil afterDelay:5.0f];
+        }
+    }
+    self.isTapScreen = !self.isTapScreen;
+}
 - (void)didVideoSelect:(NSUInteger)index {
     [self playVideoConfigure:index];
     self.isPlayingVideos = YES;
@@ -153,17 +165,19 @@ typedef enum {
 
 - (IBAction)videoSliderTouchDown:(id)sender {
     self.isSliderMoving = YES;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlButtonViewHide) object:nil];
 }
 
 - (IBAction)videoSliderUpInside:(id)sender {
     CMTime dragedCMTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
     __weak typeof(self) weakSelf = self;
     [self.player seekToTime:dragedCMTime completionHandler: ^(BOOL finished) {
-        if (!self.isPlayingVideos) {
-            [weakSelf.player play];
-        }
+         if (!self.isPlayingVideos) {
+             [weakSelf.player play];
+         }
      }];
     self.isSliderMoving = NO;
+    [self performSelector:@selector(controlButtonViewHide) withObject:nil afterDelay:5.0f];
 }
 
 #pragma mark - private instance method
@@ -183,7 +197,7 @@ typedef enum {
     self.isPlayingVideos = YES;
     self.dataSoruce = videoData;
     self.playIndex = 0;
-    self.isHide = NO;
+    self.isTapScreen = NO;
     [self playVideoConfigure:self.playIndex];
 }
 
@@ -201,7 +215,9 @@ typedef enum {
         self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         [self.playVideoView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
         [self.playVideoView.layer addSublayer:self.playerLayer];
+        [self controlButtonViewHide];
         [self addObservers];
+        [self.loadActivityView startAnimating];
     }
     else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"沒有影片" message:@"趕快去下載" preferredStyle:UIAlertControllerStyleAlert];
@@ -323,10 +339,10 @@ typedef enum {
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"]) {
         AVPlayerStatus status = [change[@"new"] intValue];
         if (status == AVPlayerStatusReadyToPlay) {
+            [self.loadActivityView stopAnimating];
             [self addProgressBarUpdate];
         }
     }

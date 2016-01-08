@@ -11,6 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dhq-Qd-a6B">
+                    <rect key="frame" x="150" y="90" width="20" height="20"/>
+                    <color key="color" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-B9-1St">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -86,6 +90,7 @@
             <connections>
                 <outlet property="controlButtonView" destination="vE2-ka-wf4" id="nmx-oe-u5s"/>
                 <outlet property="currentTimeLabel" destination="Gfg-gU-Z7E" id="3f0-ZT-M43"/>
+                <outlet property="loadActivityView" destination="dhq-Qd-a6B" id="Bii-nX-Smp"/>
                 <outlet property="nextButton" destination="dnO-iz-mYP" id="scR-tZ-ZJ2"/>
                 <outlet property="playAndPauseButton" destination="bCS-FV-A0k" id="Tkp-Z8-Koj"/>
                 <outlet property="playVideoView" destination="0cP-B9-1St" id="4CH-Ix-cxa"/>
@@ -94,14 +99,8 @@
                 <outlet property="totalTimeLabel" destination="atQ-b3-cgF" id="qfT-2C-EIx"/>
                 <outlet property="videoSlider" destination="vwS-WX-xQE" id="blc-1S-WGo"/>
             </connections>
-            <point key="canvasLocation" x="-1691" y="-346"/>
+            <point key="canvasLocation" x="-1411" y="-329"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J0e-zP-v9V">
-            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" title="Button"/>
-            <point key="canvasLocation" x="-634" y="-241"/>
-        </button>
         <tapGestureRecognizer id="RrM-mA-ihj">
             <connections>
                 <action selector="tapGestureRecognizerAction:" destination="tPB-vs-EMS" id="OVM-9s-Qu2"/>
