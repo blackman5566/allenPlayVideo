@@ -70,6 +70,7 @@
 
 - (void)setupTaskInfoTableView {
     [self.taskInfoTableView registerClass:[DownloadListCell class] forCellReuseIdentifier:@"DownloadListCell"];
+    self.taskInfoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)setupNaviButton {

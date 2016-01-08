@@ -77,6 +77,7 @@
 
 - (void)setupVideoInfoTableView {
     [self.videoInfoTableView registerClass:[PlayVideoCell class] forCellReuseIdentifier:@"PlayVideoCell"];
+    self.videoInfoTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - life cycle

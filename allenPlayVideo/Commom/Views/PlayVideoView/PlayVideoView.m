@@ -105,7 +105,7 @@ typedef enum {
     NSInteger preIndex = (self.playIndex + self.dataSoruce.count);
     self.playIndex = preIndex % self.dataSoruce.count;
     [self playVideoConfigure:self.playIndex];
-    self.isPlayingVideos = YES;
+    self.isPlayingVideos = NO;
     [self playVideoAndPause];
 }
 
@@ -120,6 +120,7 @@ typedef enum {
 
     }
     self.isPlayingVideos = !self.isPlayingVideos;
+
 }
 
 - (void)didVideoSelect:(NSUInteger)index {
@@ -127,6 +128,7 @@ typedef enum {
     self.isPlayingVideos = YES;
     [self playVideoAndPause];
 }
+
 - (void)removeVideo:(NSInteger)index callBack:(RemoveVideoBackBlock)completion {
     NSString *filetitle = self.dataSoruce[index];
     NSString *path = [self playVideo:filetitle pathType:PathTypeFromDefault];
@@ -157,9 +159,11 @@ typedef enum {
     CMTime dragedCMTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
     __weak typeof(self) weakSelf = self;
     [self.player seekToTime:dragedCMTime completionHandler: ^(BOOL finished) {
-         [weakSelf playVideoAndPause];
+        if (!self.isPlayingVideos) {
+            [weakSelf.player play];
+        }
      }];
-    self.isSliderMoving = !self.isSliderMoving;
+    self.isSliderMoving = NO;
 }
 
 #pragma mark - private instance method
