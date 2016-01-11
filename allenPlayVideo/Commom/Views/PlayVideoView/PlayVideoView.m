@@ -31,6 +31,7 @@ typedef enum {
 @property (strong, nonatomic) NSMutableArray *dataSoruce;
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerLayer *playerLayer;
+@property (strong, nonatomic) NSTimer *timeObserver;
 
 @property (assign, nonatomic) BOOL isChangeRate;
 @property (assign, nonatomic) BOOL isPlayingVideos;
@@ -165,6 +166,7 @@ typedef enum {
 
 - (IBAction)videoSliderTouchDown:(id)sender {
     self.isSliderMoving = YES;
+    [self.player removeTimeObserver:self.timeObserver];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlButtonViewHide) object:nil];
 }
 
@@ -174,6 +176,7 @@ typedef enum {
     [self.player seekToTime:dragedCMTime completionHandler: ^(BOOL finished) {
          if (!self.isPlayingVideos) {
              [weakSelf.player play];
+             [weakSelf addProgressBarUpdate];
          }
      }];
     self.isSliderMoving = NO;
@@ -344,6 +347,7 @@ typedef enum {
         if (status == AVPlayerStatusReadyToPlay) {
             [self.loadActivityView stopAnimating];
             [self addProgressBarUpdate];
+            NSLog(@"ininder");
         }
     }
 }
@@ -354,15 +358,13 @@ typedef enum {
     self.videoSlider.maximumValue = totalSeconds;
     // 给播放器增加進度更新
     __weak typeof(self) weakSelf = self;
-    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
-         if (!weakSelf.isSliderMoving) {
-             CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
-             weakSelf.videoSlider.value = currentTime;
-             weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
-             CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
-             weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
-         }
-     }];
+    self.timeObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
+                             CGFloat currentTime = CMTimeGetSeconds(weakSelf.player.currentTime);
+                             weakSelf.videoSlider.value = currentTime;
+                             weakSelf.currentTimeLabel.text = [weakSelf convertTime:currentTime];
+                             CGFloat surplusTotalTime = (CGFloat)totalTime.value / totalTime.timescale;
+                             weakSelf.totalTimeLabel.text = [weakSelf convertTime:surplusTotalTime - currentTime];
+                         }];
 }
 
 - (void)addObservers {

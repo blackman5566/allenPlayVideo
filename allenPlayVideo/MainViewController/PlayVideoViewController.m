@@ -58,6 +58,7 @@
     NSString *videoTitle = self.videoFile[indexPath.row];
     cell.videoTitle.text = videoTitle;
     cell.videoImage.image = [self.playVideo videoImage:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

@@ -109,7 +109,7 @@
 }
 
 - (void)openListView {
-
+    [self downLoadVideo];
 }
 
 #pragma mark - life cycle
