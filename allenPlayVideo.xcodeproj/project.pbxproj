@@ -18,6 +18,9 @@
 		7E5E80F31C4CD9E30088A19C /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E80EF1C4CD9E30088A19C /* DownloadListViewController.m */; };
 		7E5E80F41C4CD9E30088A19C /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E80F01C4CD9E30088A19C /* DownloadListViewController.xib */; };
 		7E5E80F81C4CE1530088A19C /* NSURL+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E80F71C4CE1530088A19C /* NSURL+Category.m */; };
+		7E5E80FE1C4CE4D90088A19C /* XibBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E80FC1C4CE4D90088A19C /* XibBaseCell.m */; };
+		7E5E80FF1C4CE4D90088A19C /* XibBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E80FD1C4CE4D90088A19C /* XibBaseCell.xib */; };
+		7E5E81021C4CE5B90088A19C /* UITableViewCell+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E81011C4CE5B90088A19C /* UITableViewCell+Category.m */; };
 		7E96BCDB1C35011A00C189A9 /* DaiYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD11C35011A00C189A9 /* DaiYoutubeParser.m */; };
 		7E96BCDC1C35011A00C189A9 /* DaiYoutubeParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD41C35011A00C189A9 /* DaiYoutubeParserOperation.m */; };
 		7E96BCDD1C35011A00C189A9 /* DaiYoutubeParserWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E96BCD61C35011A00C189A9 /* DaiYoutubeParserWebView.m */; };
@@ -59,6 +62,11 @@
 		7E5E80F61C4CE1530088A19C /* NSURL+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Category.h"; sourceTree = "<group>"; };
 		7E5E80F71C4CE1530088A19C /* NSURL+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Category.m"; sourceTree = "<group>"; };
 		7E5E80F91C4CE1760088A19C /* allenPlayVideo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = allenPlayVideo.pch; sourceTree = "<group>"; };
+		7E5E80FB1C4CE4D90088A19C /* XibBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibBaseCell.h; sourceTree = "<group>"; };
+		7E5E80FC1C4CE4D90088A19C /* XibBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibBaseCell.m; sourceTree = "<group>"; };
+		7E5E80FD1C4CE4D90088A19C /* XibBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibBaseCell.xib; sourceTree = "<group>"; };
+		7E5E81001C4CE5B90088A19C /* UITableViewCell+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Category.h"; sourceTree = "<group>"; };
+		7E5E81011C4CE5B90088A19C /* UITableViewCell+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Category.m"; sourceTree = "<group>"; };
 		7E96BCD01C35011A00C189A9 /* DaiYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParser.h; sourceTree = "<group>"; };
 		7E96BCD11C35011A00C189A9 /* DaiYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaiYoutubeParser.m; sourceTree = "<group>"; };
 		7E96BCD21C35011A00C189A9 /* DaiYoutubeParserDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaiYoutubeParserDefine.h; sourceTree = "<group>"; };
@@ -168,8 +176,20 @@
 			children = (
 				7E5E80F61C4CE1530088A19C /* NSURL+Category.h */,
 				7E5E80F71C4CE1530088A19C /* NSURL+Category.m */,
+				7E5E81001C4CE5B90088A19C /* UITableViewCell+Category.h */,
+				7E5E81011C4CE5B90088A19C /* UITableViewCell+Category.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		7E5E80FA1C4CE4C20088A19C /* XibBaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E5E80FB1C4CE4D90088A19C /* XibBaseCell.h */,
+				7E5E80FC1C4CE4D90088A19C /* XibBaseCell.m */,
+				7E5E80FD1C4CE4D90088A19C /* XibBaseCell.xib */,
+			);
+			path = XibBaseCell;
 			sourceTree = "<group>";
 		};
 		7E96BCCE1C35011A00C189A9 /* ThirdParty */ = {
@@ -218,6 +238,7 @@
 		7E96BCE81C3501FF00C189A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E5E80FA1C4CE4C20088A19C /* XibBaseCell */,
 				7E96BCE91C3501FF00C189A9 /* PlayVideoView */,
 			);
 			path = Views;
@@ -408,6 +429,7 @@
 				7E5E80DC1C4CD94A0088A19C /* PlayVideoViewController.xib in Resources */,
 				7E5E80F21C4CD9E30088A19C /* DownloadListCell.xib in Resources */,
 				E464C5F31C30D7C300E05FC4 /* Assets.xcassets in Resources */,
+				7E5E80FF1C4CE4D90088A19C /* XibBaseCell.xib in Resources */,
 				7E5E80F41C4CD9E30088A19C /* DownloadListViewController.xib in Resources */,
 				7E5E80E81C4CD9AD0088A19C /* SearchVideoViewController.xib in Resources */,
 				7E96BCEE1C3501FF00C189A9 /* PlayVideoView.xib in Resources */,
@@ -428,6 +450,7 @@
 				97B3D9CB1C463B6D00BC9947 /* DownloadModel.m in Sources */,
 				E464C5EB1C30D7C300E05FC4 /* AppDelegate.m in Sources */,
 				7E5E80F11C4CD9E30088A19C /* DownloadListCell.m in Sources */,
+				7E5E81021C4CE5B90088A19C /* UITableViewCell+Category.m in Sources */,
 				97B3D9CC1C463B6D00BC9947 /* FileDownloadInfo.m in Sources */,
 				7E5E80E11C4CD96C0088A19C /* PlayVideoCell.m in Sources */,
 				7E5E80F31C4CD9E30088A19C /* DownloadListViewController.m in Sources */,
@@ -436,6 +459,7 @@
 				97B3D95B1C3BF71500BC9947 /* DaiStorage.m in Sources */,
 				7E5E80DB1C4CD94A0088A19C /* PlayVideoViewController.m in Sources */,
 				97B3D95E1C3BF71500BC9947 /* DaiStoragePropertiesInObject.m in Sources */,
+				7E5E80FE1C4CE4D90088A19C /* XibBaseCell.m in Sources */,
 				97B3D95C1C3BF71500BC9947 /* DaiStorageArray.m in Sources */,
 				7E5E80E71C4CD9AD0088A19C /* SearchVideoViewController.m in Sources */,
 				97B3D9D01C463BBC00BC9947 /* VideoListStorage.m in Sources */,

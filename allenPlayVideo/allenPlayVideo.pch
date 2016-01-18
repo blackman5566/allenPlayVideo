@@ -9,6 +9,10 @@
 #ifndef allenPlayVideo_pch
 #define allenPlayVideo_pch
 
+// Commom
     #import "NSURL+Category.h"
+    #import "UITableViewCell+Category.h"
+    #import "XibBaseCell.h"
 
+    #define DocumentDirectory NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]
 #endif

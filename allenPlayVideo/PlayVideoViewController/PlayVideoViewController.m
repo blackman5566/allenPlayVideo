@@ -14,6 +14,7 @@
 @interface PlayVideoViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *videoInfoTableView;
+
 @property(nonatomic, strong) PlayVideoView *playVideo;
 @property(nonatomic, strong) NSMutableArray *videoFile;
 
@@ -30,20 +31,9 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.playVideo didVideoSelect:indexPath.row];
-}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.playVideo removeVideo:indexPath.row callBack:^{
-            [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
-        }];
-        [self.videoInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
 }
 
 #pragma mark - TableView DataSource
@@ -60,6 +50,19 @@
     cell.videoImage.image = [self.playVideo videoImage:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.playVideo removeVideo:indexPath.row callBack:^{
+            [[VideoListStorage shared] exportPath:[DaiStoragePath document]];
+        }];
+        [self.videoInfoTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
 #pragma mark - private method

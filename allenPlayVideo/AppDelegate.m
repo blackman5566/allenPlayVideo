@@ -26,7 +26,10 @@
     tabBar.selectedIndex = 2;
     self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
-    NSLog(@"%@", NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES));
+    
+#if DEBUG
+    NSLog(@"%@", DocumentDirectory);
+#endif
     return YES;
 }
 

@@ -6,9 +6,8 @@
 //  Copyright © 2016年 allen_hsu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@interface PlayVideoCell : XibBaseCell
 
-@interface PlayVideoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *videoImage;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitle;
 

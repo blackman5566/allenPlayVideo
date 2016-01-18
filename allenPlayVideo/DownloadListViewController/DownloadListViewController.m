@@ -59,8 +59,9 @@
     return cell;
 }
 
+#pragma mark - private instance method
 
-#pragma mark - init
+#pragma mark * init
 
 - (void)setupInitValue {
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -82,6 +83,7 @@
 }
 
 - (void)setupBlocks {
+    __weak typeof(self) weakSelf = self;
     [DownloadModel downloadProgressUpdateBlock: ^(NSURLSessionDownloadTask *downloadTask, CGFloat bytesWritten, CGFloat totalBytesWritten, CGFloat totalBytesExpectedToWrite) {
          FileDownloadInfo *fileInfo;
          for (fileInfo in [DownloadModel fileInfoArrays]) {
@@ -90,22 +92,18 @@
              }
          }
         dispatch_sync(dispatch_get_main_queue(), ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             fileInfo.downloadProgress = totalBytesWritten / totalBytesExpectedToWrite;
             NSInteger index = [[DownloadModel fileInfoArrays] indexOfObject:fileInfo];
-            DownloadListCell *cell = [self.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+            DownloadListCell *cell = [strongSelf.taskInfoTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
             cell.progressView.progress = fileInfo.downloadProgress;
             cell.progressLabel.text = [NSString stringWithFormat:@"%1.1f", fileInfo.downloadProgress * 100];
         });
     }];
 
-    __weak typeof(self) weakSelf = self;
     [DownloadModel downloadFinishCallBackBlockcompletion: ^{
          [weakSelf.taskInfoTableView reloadData];
      }];
-}
-
-- (void)openListView {
-    [self.taskInfoTableView reloadData];
 }
 
 #pragma mark - life cycle
