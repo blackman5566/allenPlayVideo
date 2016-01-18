@@ -40,8 +40,8 @@
 
 - (NSArray *)generatorViewControllers {
     NSArray *viewControllers = @[[PlayVideoViewController new], [SearchVideoViewController new], [DownloadListViewController new]];
-    NSArray *selectImages = @[@"playx2", @"searchImagex21", @"Downloadx2"];
-    NSArray *selectedImages = @[@"playedx2", @"searchImagex2", @"DownloadFilledx2"];
+    NSArray *selectImages = @[@"play", @"searchImage1", @"Download"];
+    NSArray *selectedImages = @[@"played", @"searchImage", @"DownloadFilled"];
     NSMutableArray *naviViewControllers = [NSMutableArray new];
     for (int i = 0; i < viewControllers.count; i++) {
         UINavigationController *naviViewController = [[UINavigationController alloc] initWithRootViewController:viewControllers[i]];
