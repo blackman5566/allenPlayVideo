@@ -77,8 +77,8 @@
 - (void)setupNaviButton {
     UIBarButtonItem *listButton = [[UIBarButtonItem alloc] initWithTitle:@"下載"
                                                                    style:UIBarButtonItemStyleDone
-                                                                  target:self
-                                                                  action:@selector(openListView)];
+                                                                  target:self.taskInfoTableView
+                                                                  action:@selector(reloadData)];
     self.navigationItem.leftBarButtonItem = listButton;
 }
 
