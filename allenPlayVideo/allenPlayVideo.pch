@@ -1,0 +1,14 @@
+//
+//  allenPlayVideo.pch
+//  allenPlayVideo
+//
+//  Created by daisuke on 2016/1/18.
+//  Copyright © 2016年 allen_hsu. All rights reserved.
+//
+
+#ifndef allenPlayVideo_pch
+#define allenPlayVideo_pch
+
+    #import "NSURL+Category.h"
+
+#endif
